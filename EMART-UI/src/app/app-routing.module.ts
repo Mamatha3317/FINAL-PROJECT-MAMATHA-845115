@@ -16,37 +16,38 @@ import { AddItemsComponent } from './Seller/add-items/add-items.component';
 import { ViewItemsComponent } from './Seller/view-items/view-items.component';
 import { ViewProfileComponent } from './Seller/view-profile/view-profile.component';
 import { ViewReportsComponent } from './Seller/view-reports/view-reports.component';
-import {  RegisterbuyerComponent } from './Account/register-buyer/register-buyer.component';
 import { RegisterSellerComponent } from './Account/register-seller/register-seller.component';
 import { LoginComponent } from './Account/login/login.component';
 import { HomeComponent } from './Account/home/home.component';
+import { RegisterBuyerComponent } from './Account/register-buyer/register-buyer.component';
 
 
 const routes: Routes = [
-   {path:'adminlandingpage',component:AdminLandingPageComponent,children:
-  [{path:'addcategory',component:AddCategoryComponent},
-  {path:'addsubcategory',component:AddSubCategoryComponent},
-{path:'blockunblockbuyer',component:BlockUnblockBuyerComponent},
-{path:'dailyreport',component:DailyReportComponent},
-{path:'blockunblockseller',component:BlockUnblockSellerComponent}
+   {path:'admin-landing-page',component:AdminLandingPageComponent,children:
+  [{path:'add-category',component:AddCategoryComponent},
+  {path:'add-subcategory',component:AddSubCategoryComponent},
+{path:'block-unblock-buyer',component:BlockUnblockBuyerComponent},
+{path:'daily-report',component:DailyReportComponent},
+{path:'block-unblock-seller',component:BlockUnblockSellerComponent}
 ]},
-{path:'buyerlandingpage',component:BuyerLandingPageComponent,children:[
+{path:'buyer-landing-page',component:BuyerLandingPageComponent,children:[
   {path:'buyproduct',component:BuyProductComponent},
   {path:'purchasehistory',component:PurchaseHistoryComponent},
   {path:'search',component:SearchComponent},
   {path:'viewcart',component:ViewCartComponent}
 ]},
-{path:'sellerlandingpage',component:SellerLandingPageComponent,children:[
-  {path:'additems',component:AddItemsComponent},
-  {path:'viewitems',component:ViewItemsComponent},
-  {path:'viewprofile',component:ViewProfileComponent},
-  {path:'viewreports',component:ViewReportsComponent}
+{path:'seller-landing-page',component:SellerLandingPageComponent,children:[
+  {path:'add-items',component:AddItemsComponent},
+  {path:'view-items',component:ViewItemsComponent},
+  {path:'view-profile',component:ViewProfileComponent},
+  {path:'view-reports',component:ViewReportsComponent}
 ]},
-{path:'Home',component:HomeComponent,children:[
-{path:'registerbuyer',component:RegisterbuyerComponent},
-{path:'registerseller',component:RegisterSellerComponent},
+{path:'home',component:HomeComponent,children:[
+  {path:'register-buyer',component:RegisterBuyerComponent},
+{path:'register-seller',component:RegisterSellerComponent},
 {path:'login',component:LoginComponent}
 ]},
+{path:'',redirectTo:'home',pathMatch:'full'}
 ];
 
 @NgModule({

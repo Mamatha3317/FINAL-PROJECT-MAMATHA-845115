@@ -1,1 +1,63 @@
-<p>register-seller works!</p>
+<form fxLayoutAlign="center start">
+    <div class="card m-3">
+        <div class="card-body">
+            <form [formGroup]="sellerregisterform" (ngSubmit)="onSubmit()">
+                <div class="form-group ">
+                        <label>ID</label>
+                        <input type="text" formControlName="sid" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.sid.errors }">
+                           <div *ngIf="submitted && f.sid.errors" class="invalid-feedback">
+                            <div *ngIf="f.sid.errors.required">ID is required</div>
+                            <div *ngIf="f.sid.errors.pattern">Enter only 4 numbers</div>
+                        </div>
+               </div>
+                <div class="form-group ">
+                        <label>User Name</label>
+                        <input type="text" formControlName="sname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.sname.errors }" />
+                        <div *ngIf="submitted && f.sname.errors" class="invalid-feedback">
+                            <div *ngIf="f.sname.errors.required">Name is required</div>
+                            <div *ngIf="f.sname.errors.pattern">Enter only Alphabets in upper case</div>
+                        </div>
+                 </div>
+                <div class="form-group ">
+                        <label>Created DateTime</label>
+                        <input type="date" formControlName="createddatetime" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.createddatetime.errors }" />
+                        <div *ngIf="submitted && f.createddatetime.errors" class="invalid-feedback">
+                            <div *ngIf="f.createddatetime.errors.required">Join date is required</div>
+                        </div>
+                </div>
+                
+              <div class="form-group ">
+                    <label>Mobile</label>
+                    <input type="text" value="+91" readonly size="2"/><input type="number" formControlName="smobile" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.smobile.errors }" />
+                    <div *ngIf="submitted && f.smobile.errors" class="invalid-feedback">
+                        <div *ngIf="f.smobile.errors.required">Mobileno is required</div>
+                        <div *ngIf="f.smobile.errors.pattern">Mobileno Must be Valid</div>
+                    </div>
+                
+             </div>
+                <div class="form-group ">
+                    <label>Email</label>
+                    <input type="text" formControlName="semail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.semail.errors }" />
+                    <div *ngIf="submitted && f.semail.errors" class="invalid-feedback">
+                        <div *ngIf="f.semail.errors.required">Email is required</div>
+                        <div *ngIf="f.semail.errors.bemail">Email must have valid email address</div>
+                    </div>
+                </div>
+                   <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">Password is required</div>
+                            <div *ngIf="f.password.errors.minlength">Password must be at least 7 characters</div>
+                        </div>
+                    </div>
+                <div class="text-center">
+                    <button class="btn btn-primary mr-1">Submit</button>
+              </div>
+            </form>
+        </div>
+    </div>
+    </form>
+    
+    
+    

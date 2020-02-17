@@ -1,2 +1,46 @@
+<html>
+<head>
+    <style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: palevioletred;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
+li {
+  float: left;
+}
 
+li a {
+  display: block;
+  color:black;
+  text-align: center;
+  padding: 17px 19px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: skyblue;
+}
+.active {
+  background-color:yellowgreen;
+}
+</style>
+</head>
+<body>
     
+ <div class="header">
+ 
+        <h2 text-align="center">WELCOME TO E-MART</h2>
+ </div>
+    <ul>
+        <li><a href="login">Home</a></li>
+        <li><a href="login">About</a></li>
+        <li><a href="login">Contact</a></li>
+        <li style="float:right"><a class="active" [routerLink]="'/home/login'">Login</a></li>
+      </ul>
+<router-outlet></router-outlet>

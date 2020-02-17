@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BuyerLandingPageComponent } from './Buyer/buyer-landing-page/buyer-landing-page.component';
@@ -22,7 +22,7 @@ import { DailyReportComponent } from './Admin/daily-report/daily-report.componen
 import { LoginComponent } from './Account/login/login.component';
 import { RegisterSellerComponent } from './Account/register-seller/register-seller.component';
 import { HomeComponent } from './Account/home/home.component';
-import { RegisterbuyerComponent } from './Account/register-buyer/register-buyer.component';
+import { RegisterBuyerComponent } from './Account/register-buyer/register-buyer.component';
 
 @NgModule({
   declarations: [
@@ -45,14 +45,19 @@ import { RegisterbuyerComponent } from './Account/register-buyer/register-buyer.
     DailyReportComponent,
     LoginComponent,
     RegisterSellerComponent,
-    RegisterbuyerComponent,
+    RegisterBuyerComponent,
     HomeComponent
+    
+  
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
+
   ],
   providers: [],
-  bootstrap: [RegisterbuyerComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
