@@ -14,13 +14,14 @@
 
     <div class="form-group">
     <button (click)="validate()">Login</button>&nbsp;&nbsp;<br>
-    <a [routerLink]="'/home/registerbuyer'"  >Register New Buyer</a>&nbsp;&nbsp;<br>
-    <a [routerLink]="'/home/registerseller'" >Register New Seller</a>          
+            
     </div>
    
     <div class="form-group ">
         <label class="text-error ">{{errormessage}}</label>
-        </div>
+    </div>
        
+     
         
 </div>
+<router-outlet></router-outlet>

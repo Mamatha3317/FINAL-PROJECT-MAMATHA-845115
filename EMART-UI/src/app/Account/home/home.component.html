@@ -1,46 +1,37 @@
-<html>
-<head>
+
     <style>
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: palevioletred;
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  top: 0;
-}
-li {
-  float: left;
-}
+      body{
+        background-image:url("assets/images/1.jpg");
+        background-size: cover;
+        background-attachment: fixed;
+        height:500px;
+      }
+    </style>
 
-li a {
-  display: block;
-  color:black;
-  text-align: center;
-  padding: 17px 19px;
-  text-decoration: none;
-}
-
-li a:hover {
-  background-color: skyblue;
-}
-.active {
-  background-color:yellowgreen;
-}
-</style>
-</head>
-<body>
+<header>
+  
+  
+  <div class="topnav " style="background-color:white;">
     
- <div class="header">
- 
-        <h2 text-align="center">WELCOME TO E-MART</h2>
- </div>
-    <ul>
-        <li><a href="login">Home</a></li>
-        <li><a href="login">About</a></li>
-        <li><a href="login">Contact</a></li>
+  <marquee><a href="home.component.html"><img src="assets/images/emart1.jpg"  height="100px"></a></marquee>
+  <ul>
+        <li><a href="home">Home</a></li>
+        <li><a href="about">About</a></li>
+        <li><a href="contact">Contact</a></li>
+        <li><a href="/home/register">Register</a></li>
         <li style="float:right"><a class="active" [routerLink]="'/home/login'">Login</a></li>
       </ul>
-<router-outlet></router-outlet>
+
+    </div>
+  </header>
+  
+  
+  <body>
+    <router-outlet></router-outlet>
+</body>
+<div>
+
+  <footer  style="background-color:palevioletred;text-align: center">
+   <p> &copy All Rights Reserved 2017</p>
+</footer>
+</div>

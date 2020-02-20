@@ -23,6 +23,7 @@ import { LoginComponent } from './Account/login/login.component';
 import { RegisterSellerComponent } from './Account/register-seller/register-seller.component';
 import { HomeComponent } from './Account/home/home.component';
 import { RegisterBuyerComponent } from './Account/register-buyer/register-buyer.component';
+import { RegisterComponent } from './Account/register/register.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { RegisterBuyerComponent } from './Account/register-buyer/register-buyer.
     LoginComponent,
     RegisterSellerComponent,
     RegisterBuyerComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent,
     
   
   ],
