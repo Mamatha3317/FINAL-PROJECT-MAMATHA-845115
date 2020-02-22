@@ -10,43 +10,46 @@ import { Seller} from 'src/app/Models/seller';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-logiform:FormGroup;
-uname:string;
-pwd:string;
-submitted=true;
-errmsg:string;
-  constructor(private formbuilder:FormBuilder,private route:Router ) { }
-
-  ngOnInit() {
-  }
-  public validate()
-  {
-    if(this.uname=="buyer"&& this.pwd=="buyer")
+  loginform:FormGroup;
+  
+  name:string;
+  pwd:string;
+  
+   submitted=true;
+   errormessage:string;
+   constructor(private formbuilder:FormBuilder,private route:Router) {
+    
+    }
+ 
+   ngOnInit() {
+   
+   }
+   public validate()
+   {
+     if(this.name=="buyer"&& this.pwd=="buyer")
+     {
+            
+             
+             sessionStorage.setItem('un',this.name)
+               this.route.navigateByUrl('buyer-landing-page'); 
+             
+           
+          
+     }
+   
+    else if(this.name=="seller"&& this.pwd=="seller")
     {
            
-            
-            sessionStorage.setItem('un',this.uname)
-              this.route.navigateByUrl('buyer-landing-page'); 
-            
-          
-         
+           sessionStorage.setItem('un',this.name)
+             this.route.navigateByUrl('seller-landing-page');
     }
-  
-   else if(this.uname=="seller"&& this.pwd=="seller")
-   {
-          
-          sessionStorage.setItem('un',this.uname)
-            this.route.navigateByUrl('seller-landing-page'); 
-   }
-        
-        else
-        {
-          this.errmsg="invalid credentials";
-        }
-   }
-  
+         
+         else
+         {
+           this.errormessage="invalid credentials";
+         }
+    }
+   
+       
       
-     
-}
-  
-
+ }

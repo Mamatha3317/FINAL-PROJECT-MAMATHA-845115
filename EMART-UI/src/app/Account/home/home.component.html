@@ -1,17 +1,10 @@
 
-    <style>
-      body{
-        background-image:url("assets/images/1.jpg");
-        background-size: cover;
-        background-attachment: fixed;
-        height:500px;
-      }
-    </style>
-
+  <div class="img"> 
+ 
 <header>
-  
-  
-  <div class="topnav " style="background-color:white;">
+
+    
+  <div class="topnav">
     
   <marquee><a href="home.component.html"><img src="assets/images/emart1.jpg"  height="100px"></a></marquee>
   <ul>
@@ -20,18 +13,19 @@
         <li><a href="contact">Contact</a></li>
         <li><a href="/home/register">Register</a></li>
         <li style="float:right"><a class="active" [routerLink]="'/home/login'">Login</a></li>
-      </ul>
+  </ul>
 
     </div>
   </header>
-  
-  
-  <body>
-    <router-outlet></router-outlet>
-</body>
+</div>
+<div><router-outlet></router-outlet>
+</div>
 <div>
-
   <footer  style="background-color:palevioletred;text-align: center">
-   <p> &copy All Rights Reserved 2017</p>
+   <p> @copy All Rights Reserved 2017</p>
 </footer>
 </div>
+
+
+  
+
