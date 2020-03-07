@@ -1,8 +1,8 @@
 export class Buyer {
-    Bid:number;
-    Bname:string;
-    CreateDateTime:Date;
-    Bmobile:number;
-    Bmail:string;
-    Bpwd:string;
+    buyerid:number;
+    buyername:string;
+    createddatetime:Date;
+    buyerno:string;
+    buyermail:string;
+    buyerpassword:string;
 }

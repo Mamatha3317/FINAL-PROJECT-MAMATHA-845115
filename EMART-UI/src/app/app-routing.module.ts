@@ -20,34 +20,40 @@ import { RegisterSellerComponent } from './Account/register-seller/register-sell
 import { LoginComponent } from './Account/login/login.component';
 import { HomeComponent } from './Account/home/home.component';
 import { RegisterBuyerComponent } from './Account/register-buyer/register-buyer.component';
-import { RegisterComponent } from './Account/register/register.component';
+import { EditprofileComponent } from './Buyer/editprofile/editprofile.component';
+import { ViewCategoryComponent } from './Admin/view-category/view-category.component';
+import { ViewSubCategoryComponent } from './Admin/view-sub-category/view-sub-category.component';
+import { EditsellerprofileComponent } from './Seller/editsellerprofile/editsellerprofile.component';
 
 
 const routes: Routes = [
    {path:'admin-landing-page',component:AdminLandingPageComponent,children:
   [{path:'add-category',component:AddCategoryComponent},
-  {path:'add-subcategory',component:AddSubCategoryComponent},
+  {path:'add-sub-category',component:AddSubCategoryComponent},
 {path:'block-unblock-buyer',component:BlockUnblockBuyerComponent},
 {path:'daily-report',component:DailyReportComponent},
-{path:'block-unblock-seller',component:BlockUnblockSellerComponent}
+{path:'block-unblock-seller',component:BlockUnblockSellerComponent},
+{path:'view-category',component:ViewCategoryComponent},
+{path:'view-sub-category',component:ViewSubCategoryComponent},
 ]},
 {path:'buyer-landing-page',component:BuyerLandingPageComponent,children:[
   {path:'buy-product',component:BuyProductComponent},
   {path:'purchase-history',component:PurchaseHistoryComponent},
   {path:'search',component:SearchComponent},
-  {path:'view-cart',component:ViewCartComponent}
+  {path:'view-cart',component:ViewCartComponent},
+  {path:'editprofile',component:EditprofileComponent},
 ]},
 {path:'seller-landing-page',component:SellerLandingPageComponent,children:[
   {path:'add-items',component:AddItemsComponent},
   {path:'view-items',component:ViewItemsComponent},
   {path:'view-profile',component:ViewProfileComponent},
-  {path:'view-reports',component:ViewReportsComponent}
+  {path:'view-reports',component:ViewReportsComponent},
+  {path:'editsellerprofile',component:EditsellerprofileComponent},
 ]},
 {path:'home',component:HomeComponent,children:[
-  {path:'register',component:RegisterComponent},
+  {path:'login',component:LoginComponent},
   {path:'register-buyer',component:RegisterBuyerComponent},
-{path:'register-seller',component:RegisterSellerComponent},
-{path:'login',component:LoginComponent}
+  {path:'register-seller',component:RegisterSellerComponent},
 ]},
 {path:'',redirectTo:'home',pathMatch:'full'}
 ];

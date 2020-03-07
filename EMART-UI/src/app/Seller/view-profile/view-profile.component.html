@@ -1,1 +1,69 @@
-<p>view-profile works!</p>
+<style>
+    label{
+        color:black;
+    }
+    #fa{
+       float:left; 
+    }
+</style>
+<form fxLayoutAlign="center ">
+    <div class="container card col-md-4 " id="fa" style="height:150;background-color:transparent;">
+        <div class="card-body">
+            <form [formGroup]="viewprofileform" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                        <label>SellerId</label>
+                        <input type="text" formControlName="Sellerid" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Sellerid.errors }">
+                           <div *ngIf="submitted && f.Sellerid.errors" class="invalid-feedback">
+                            <div *ngIf="f.Sellerid.errors.required">ID is required</div>
+                        </div>
+               </div>
+                <div class="form-group ">
+                        <label for="input-sm">SellerName</label>
+                        <input type="form control input-sm" formControlName="Sellername" class="form-control" 
+                        [ngClass]="{ 'is-invalid': submitted && f.Sellername.errors }" />
+                        <div *ngIf="submitted && f.Sellername.errors" class="invalid-feedback">
+                            <div *ngIf="f.Sellername.errors.required">Name is required</div>
+                        </div>
+                 </div>
+                <div class="form-group ">
+                        <label>Created Date</label>
+                        <input type="date" formControlName="CreatedDate" class="form-control" 
+                        [ngClass]="{ 'is-invalid': submitted && f.CreatedDate.errors }" />
+                        <div *ngIf="submitted && f.CreatedDate.errors" class="invalid-feedback">
+                            <div *ngIf="f.CreatedDate.errors.required">Join date is required</div>
+                        </div>
+                </div>
+                
+              <div class="form-group">
+                    <label>SellerMobile</label>
+                    <input type="text" value="+91" readonly size="2"/><input type="number" formControlName="Sellermobile" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && f.Sellermobile.errors }" />
+                    <div *ngIf="submitted && f.Sellermobile.errors" class="invalid-feedback">
+                        <div *ngIf="f.Sellermobile.errors.required">Mobile no is required</div>
+                        <div *ngIf="f.Sellermobile.errors.pattern">Mobile no Must be Valid</div>
+                    </div>
+                
+             </div>
+                <div class="form-group">
+                    <label>SellerEmail</label>
+                    <input type="text" formControlName="Sellermail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Sellermail.errors }" />
+                    <div *ngIf="submitted && f.Sellermail.errors" class="invalid-feedback">
+                        <div *ngIf="f.Sellermail.errors.required">Email is required</div>
+                        <div *ngIf="f.Sellermail.errors.Sellermail">Email must be a valid email address</div>
+                    </div>
+                </div>
+                   <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" formControlName="Sellerpassword" class="form-control" 
+                        [ngClass]="{ 'is-invalid': submitted && f.Sellerpassword.errors }" />
+                        <div *ngIf="submitted && f.Sellerpassword.errors" class="invalid-feedback">
+                            <div *ngIf="f.Sellerpassword.errors.required">Password is required</div>
+                        </div>
+                    </div>
+                <div class="text-center">
+                    <button class="btn btn-primary mr-1">Submit</button>
+              </div>
+            </form>
+        </div>
+    </div>
+    </form>

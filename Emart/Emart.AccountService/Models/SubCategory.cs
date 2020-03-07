@@ -10,13 +10,13 @@ namespace Emart.AccountService.Models
             Items = new HashSet<Items>();
         }
 
-        public int Scid { get; set; }
-        public string Scname { get; set; }
-        public int? Cid { get; set; }
+        public int SubCategoryid { get; set; }
+        public string SubCategoryname { get; set; }
+        public int? Categoryid { get; set; }
         public string BriefDetails { get; set; }
         public string Gstin { get; set; }
 
-        public virtual Category C { get; set; }
+        public virtual Category Category { get; set; }
         public virtual ICollection<Items> Items { get; set; }
     }
 }

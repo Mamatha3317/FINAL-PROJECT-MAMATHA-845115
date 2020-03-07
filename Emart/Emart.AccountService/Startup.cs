@@ -11,6 +11,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Emart.AccountService.Models;
 using Emart.AccountService.Repositories;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Emart.AccountService
 {
@@ -29,6 +33,33 @@ namespace Emart.AccountService
             services.AddControllers();
             services.AddDbContext<EmartDBContext>();
             services.AddTransient<IAccountRepository, AccountRepository>();
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options =>
+                 options.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                       );
+            });
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(cfg =>
+            {
+                cfg.RequireHttpsMetadata = false;
+                cfg.SaveToken = true;
+                cfg.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidIssuer = Configuration["JwtIssuer"],
+                    ValidAudience = Configuration["JwtIssuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwtkey"])),
+                    ClockSkew = TimeSpan.Zero
+                };
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,9 +71,9 @@ namespace Emart.AccountService
             }
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
+            app.UseCors("AllowOrigin");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

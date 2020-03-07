@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Emart.BuyerService.Models;
+using Emart.BuyerService.Repositories;
 
 namespace Emart.BuyerService
 {
@@ -24,7 +26,17 @@ namespace Emart.BuyerService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<EmartDBContext>();
+            services.AddTransient<IBuyerRepository, BuyerRepository>();
             services.AddControllers();
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options =>
+                 options.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                       );
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,7 +50,7 @@ namespace Emart.BuyerService
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseCors("AllowOrigin");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

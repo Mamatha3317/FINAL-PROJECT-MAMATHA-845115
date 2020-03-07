@@ -1,1 +1,65 @@
-<p>admin-landing-page works!</p>
+<style>
+    
+    .div1{
+      overflow: hidden;
+      background-color:cadetblue;
+    }
+    
+    .div1 a {
+      float: left;
+      display: block;
+      color:white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+    
+    .div1 a:hover {
+      background-color:lightgrey;
+      color: black;
+    }
+    #div3 {
+      height:700px;
+    }
+    body  {
+  background-image: url("assets/images/login1.jpg");
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+  height:900px;
+ 
+}
+    .div1  a.active {
+      background-color: #2196F3;
+      color: white;
+    }
+    </style>
+    
+    <body>
+    <main>
+        <section>
+      
+            <div class="div1" style="background-color:skyblue;">
+                <a  [routerLink]="'add-category'" routerLinkActive="router-link-active" >AddCategory</a>
+                <a [routerLink]="'add-sub-category'" routerLinkActive="router-link-active" >AddSubCategory</a>
+                <a  [routerLink]="'block-unblock-buyer'" routerLinkActive="router-link-active" >Block_Unblock_Buyer</a>
+                <a [routerLink]="'block-unblock-seller'" routerLinkActive="router-link-active">Block_Unblock_Seller</a>
+                <a  [routerLink]="'daily-report'" routerLinkActive="router-link-active">DailyReports</a>
+                <a  [routerLink]="'view-category'" routerLinkActive="router-link-active">View Category</a>
+                <a  [routerLink]="'view-sub-category'" routerLinkActive="router-link-active">View SubCategory</a>
+
+                
+                <a (click)="logout()">LogOut</a>
+        </div>
+    
+             <div id="div3">
+                <router-outlet></router-outlet>
+             </div>
+          
+             
+        </section>
+    </main>   
+    
+    </body>
+    
+    

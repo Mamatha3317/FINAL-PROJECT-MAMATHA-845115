@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Emart.SellerService.Models;
+using Emart.SellerService.Repositories;
 
 namespace Emart.SellerService
 {
@@ -25,7 +27,18 @@ namespace Emart.SellerService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-        }
+            services.AddDbContext<EmartDBContext>();
+            services.AddTransient<IItemRepository, ItemRepository>();
+            services.AddTransient<ISellerRepository, SellerRepository>();
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options =>
+                 options.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                       );
+            });
+            }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -38,7 +51,7 @@ namespace Emart.SellerService
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseCors("AllowOrigin");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

@@ -45,6 +45,16 @@ D:\FINAL-PROJECT-MAMATHA-845115\Emart\Emart.GateWay\bin\Debug\netcoreapp3.1\Emar
 D:\FINAL-PROJECT-MAMATHA-845115\Emart\Emart.GateWay\bin\Debug\netcoreapp3.1\Emart.GateWay.dll
 D:\FINAL-PROJECT-MAMATHA-845115\Emart\Emart.GateWay\bin\Debug\netcoreapp3.1\Emart.GateWay.pdb
 D:\FINAL-PROJECT-MAMATHA-845115\Emart\Emart.GateWay\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
-D:\FINAL-PROJECT-MAMATHA-845115\Emart\Emart.GateWay\obj\Debug\netcoreapp3.1\Emart.GateWay.MvcApplicationPartsAssemblyInfo.cache
 D:\FINAL-PROJECT-MAMATHA-845115\Emart\Emart.GateWay\obj\Debug\netcoreapp3.1\Emart.GateWay.dll
 D:\FINAL-PROJECT-MAMATHA-845115\Emart\Emart.GateWay\obj\Debug\netcoreapp3.1\Emart.GateWay.pdb
+D:\FINAL-PROJECT-MAMATHA-845115\Emart\Emart.GateWay\bin\Debug\netcoreapp3.1\Ocelot.json
+D:\FINAL-PROJECT-MAMATHA-845115\Emart\Emart.GateWay\bin\Debug\netcoreapp3.1\FluentValidation.dll
+D:\FINAL-PROJECT-MAMATHA-845115\Emart\Emart.GateWay\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+D:\FINAL-PROJECT-MAMATHA-845115\Emart\Emart.GateWay\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.MiddlewareAnalysis.dll
+D:\FINAL-PROJECT-MAMATHA-845115\Emart\Emart.GateWay\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\FINAL-PROJECT-MAMATHA-845115\Emart\Emart.GateWay\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DiagnosticAdapter.dll
+D:\FINAL-PROJECT-MAMATHA-845115\Emart\Emart.GateWay\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\FINAL-PROJECT-MAMATHA-845115\Emart\Emart.GateWay\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+D:\FINAL-PROJECT-MAMATHA-845115\Emart\Emart.GateWay\bin\Debug\netcoreapp3.1\Ocelot.dll
+D:\FINAL-PROJECT-MAMATHA-845115\Emart\Emart.GateWay\obj\Debug\netcoreapp3.1\Emart.GateWay.MvcApplicationPartsAssemblyInfo.cs
+D:\FINAL-PROJECT-MAMATHA-845115\Emart\Emart.GateWay\obj\Debug\netcoreapp3.1\Emart.GateWay.MvcApplicationPartsAssemblyInfo.cache

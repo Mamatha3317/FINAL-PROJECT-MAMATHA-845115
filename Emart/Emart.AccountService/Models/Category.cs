@@ -11,8 +11,8 @@ namespace Emart.AccountService.Models
             SubCategory = new HashSet<SubCategory>();
         }
 
-        public int Cid { get; set; }
-        public string Cname { get; set; }
+        public int Categoryid { get; set; }
+        public string Categoryname { get; set; }
         public string BriefDetails { get; set; }
 
         public virtual ICollection<Items> Items { get; set; }

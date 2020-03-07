@@ -1,29 +1,46 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
 <body>
     <div id="login">
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-15">
                     <div id="login-box" class="col-md-12">
-                        <form id="login" class="form" action="" method="post">
-                            <h3 class="text-center text-info">Login</h3>
-                            <div class="controls">
-                                <input type="text" name="name"  [(ngModel)]="name" placeholder="Username" class="form-control" />&nbsp;&nbsp;<br>
-                                <input type="password" name="pwd"   [(ngModel)]="pwd" placeholder="Password" class="form-control" />&nbsp;&nbsp;<br>
-                            </div>
-                            <div class=form-group>
-                                <button type="button" class="btn btn-info" (click)="validate()">Login</button><br>
-                            </div>            
-                                <div class="form-group ">
-                                    <label class="text-error ">{{errormessage}}</label>
+                        
+                     <h3 class="text-center text-info">Login</h3>
+                        <div class="container" >
+                           <form class=""  [formGroup]="loginform" (ngSubmit)="Validate()" >
+                                    <div class="form-group">
+                                        <label for="username">UserName</label>
+                                        <input type="text"  formControlName="name" class="form-control" placeholder="Username" required>
+                                        
+
                                     </div>
-                        </form>
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" formControlName="pwd" class="form-control " placeholder="Password" required>
+                                    </div>
+                                <div class="form-group">
+
+                                  <input type="radio" formControlName="role" value="buyer" >Buyer &nbsp;
+                                  <input type="radio" formControlName="role" value="seller">Seller &nbsp;
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" name="Login" class="btn btn-info btn-md" value="Login">&nbsp;&nbsp;<br><br>
+                                    <button class="btn btn-info btn-md"><a [routerLink]="'/home/register-buyer'"  >Register New Buyer</a></button>&nbsp;&nbsp;<br><br>
+                                    <button class="btn btn-info btn-md"><a [routerLink]="'/home/register-seller'" >Register New Seller</a></button>          
+                                </div>
+                                &nbsp;
+                                    <div class="form-group ">
+                                        <label class="text-error ">{{errormessage}}</label>
+                                   </div>
+                                    
+                                    
+                            </form>
+                        </div>    
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
+</body>                    
+                           
+<router-outlet></router-outlet>

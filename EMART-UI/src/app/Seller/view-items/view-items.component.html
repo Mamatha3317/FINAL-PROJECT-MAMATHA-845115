@@ -1,1 +1,104 @@
-<p>view-items works!</p>
+<div class="card m-1" style="width:100%;align-items: center;">
+    <div class="container ">
+        <table class="table table-bordered">
+            <tr>
+                <th>Item Id</th>
+                <th>ItemName</th>
+                <th>Price</th>
+                <th>Category Id</th>
+                <th>SubCategory Id</th>
+                <th>Seller Id</th>
+                <th>Description</th>
+                <th>Stocknumber</th>
+                <th>Remarks</th>
+                <th>Image</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr *ngFor="let item of list">
+               <td>{{item.itemid}}</td>
+               <td>{{item.itemname}}</td>
+               <td>{{item.price}}</td>
+               <td>{{item.categoryid}}</td>
+               <td>{{item.subCategoryid}}</td>
+               <td>{{item.sellerid}}</td>
+               <td>{{item.description}}</td>
+               <td>{{item.stocknumber}}</td>
+               <td>{{item.remarks}}</td>
+               <td><img src='/assets/images/{{item.imagepath}}' style="height:150px; width:150px;"></td>
+               <td><button class="btn btn-primary" type="button" (click)="Search(item.itemid)">Edit</button></td>
+               <td><button class="btn btn-danger" type="button" (click)="Delete(item.itemid)">Delete</button></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<style>
+    label{
+        color:black;
+    }
+    #fa{
+       float:center; 
+    }
+</style>
+    <form fxLayoutAlign="center start">
+        <div class="container card col-md-4 " id="fa" style="height:150;background-color:bisque">
+            <div class="card-body">
+                <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label >Item ID</label>
+                        <input type="text" formControlName="itemid" class="form-control" readonly="readonly"/>
+                    </div>
+                   
+                   <div class="form-group">
+                        <label>Item Name</label>
+                        <input type="text" formControlName="itemname" class="form-control"  />
+                       
+                    </div>
+                    <div class="form-group">
+                        <label>Item Price </label>
+                        <input type="text" formControlName="price" class="form-control"  />
+                    
+                    </div>
+                    <div class="form-group">
+                        <label>Category Id</label>
+                        <input type="number" formControlName="categoryid" class="form-control" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label>SubCategory Id</label>
+                        <input type="number" formControlName="subCategoryid" class="form-control" readonly />
+                    </div>
+                
+                    <div class="form-group">
+                        <label>Stock Number</label>
+                        <input type="text" formControlName="stocknumber" class="form-control"  />
+                    </div>
+                    <div class="form-group">
+                        <label>Seller Id</label>
+                        <input type="number" formControlName="sellerid" class="form-control"  readonly/>
+                    </div>
+                
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input type="text" formControlName="description" class="form-control"  />
+                    
+                    </div>
+                    <div class="form-group">
+                        <label>Remarks</label>
+                        <input type="text" formControlName="remarks" class="form-control"  />
+                    
+                    </div>
+                    <div class="form-group">
+                        <label>Image Path</label>
+                        <input type="text" formControlName="imagepath" class="form-control" readonly   />
+                    
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn btn-primary mr-1" (click)="Update()">Add Item</button>&nbsp;
+                    </div>
+                </form>
+            </div>
+        </div>
+    </form>
+                    
+            

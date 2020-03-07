@@ -11,14 +11,14 @@
         <li><a href="home">Home</a></li>
         <li><a href="about">About</a></li>
         <li><a href="contact">Contact</a></li>
-        <li><a href="/home/register">Register</a></li>
         <li style="float:right"><a class="active" [routerLink]="'/home/login'">Login</a></li>
   </ul>
 
     </div>
-  </header>
+      </header>
+      <div><router-outlet></router-outlet>
 </div>
-<div><router-outlet></router-outlet>
+
 </div>
 <div>
   <footer  style="background-color:palevioletred;text-align: center">

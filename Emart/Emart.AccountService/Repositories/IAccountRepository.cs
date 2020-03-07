@@ -10,8 +10,8 @@ namespace Emart.AccountService.Repositories
     {
        
 
-        bool BuyerLogin(string uname, string pwd);
-        bool SellerLogin(string uname, string pwd);
+        Buyer BuyerLogin(string uname, string pwd);
+         Seller SellerLogin(string uname, string pwd);
         void SellerRegister(Seller obj);
         void BuyerRegister(Buyer obj);
        

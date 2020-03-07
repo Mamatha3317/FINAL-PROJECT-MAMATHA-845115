@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
+
 namespace Emart.GateWay
 {
     public class Program
@@ -17,10 +18,16 @@ namespace Emart.GateWay
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+        Host.CreateDefaultBuilder(args)
+               .ConfigureWebHostDefaults(webBuilder =>
+               {
+                   webBuilder.ConfigureAppConfiguration((host, config) =>
+                   {
+                       config.AddJsonFile("Ocelot.json");
+
+                   });
+                   webBuilder.UseStartup<Startup>();
+               });
     }
 }
+

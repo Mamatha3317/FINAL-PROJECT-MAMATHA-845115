@@ -4,50 +4,48 @@
             <form [formGroup]="buyerregisterform" (ngSubmit)="onSubmit()">
                 <div class="form-group ">
                         <label>ID</label>
-                        <input type="text" formControlName="bid" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.bid.errors }">
-                           <div *ngIf="submitted && f.bid.errors" class="invalid-feedback">
-                            <div *ngIf="f.bid.errors.required">ID is required</div>
+                        <input type="text" formControlName="buyerid" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.buyerid.errors }">
+                           <div *ngIf="submitted && f.buyerid.errors" class="invalid-feedback">
+                            <div *ngIf="f.buyerid.errors.required">ID is required</div>
                         </div>
                </div>
                 <div class="form-group ">
                         <label>User Name</label>
-                        <input type="text" formControlName="bname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.bname.errors }" />
-                        <div *ngIf="submitted && f.bname.errors" class="invalid-feedback">
-                            <div *ngIf="f.bname.errors.required">Name is required</div>
-                            <div *ngIf="f.bname.errors.pattern">Enter only Alphabets in upper case</div>
+                        <input type="text" formControlName="buyername" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.buyername.errors }" />
+                        <div *ngIf="submitted && f.buyername.errors" class="invalid-feedback">
+                            <div *ngIf="f.buyername.errors.required">Name is required</div>
                         </div>
                  </div>
                 <div class="form-group ">
-                        <label>Created DateTime</label>
-                        <input type="date" formControlName="createddatetime" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.createddatetime.errors }" />
-                        <div *ngIf="submitted && f.createddatetime.errors" class="invalid-feedback">
-                            <div *ngIf="f.createddatetime.errors.required">Join date is required</div>
+                        <label>Create DateTime</label>
+                        <input type="date" formControlName="createdatetime" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.createdatetime.errors }" />
+                        <div *ngIf="submitted && f.createdatetime.errors" class="invalid-feedback">
+                            <div *ngIf="f.createdatetime.errors.required">Created date is required</div>
                         </div>
                 </div>
                 
               <div class="form-group ">
                     <label>Mobile</label>
-                    <input type="text" value="+91" readonly size="2"/><input type="number" formControlName="bmobile" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.bmobile.errors }" />
-                    <div *ngIf="submitted && f.bmobile.errors" class="invalid-feedback">
-                        <div *ngIf="f.bmobile.errors.required">Mobileno is required</div>
-                        <div *ngIf="f.bmobile.errors.pattern">Mobileno Must be Valid</div>
+                    <input type="text" value="+91" readonly size="2"/><input type="text" formControlName="buyerno" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.buyerno.errors }" />
+                    <div *ngIf="submitted && f.buyerno.errors" class="invalid-feedback">
+                        <div *ngIf="f.buyerno.errors.required">Mobileno is required</div>
+                        <div *ngIf="f.buyerno.errors.pattern">Mobileno Must be Valid</div>
                     </div>
                 
              </div>
                 <div class="form-group ">
                     <label>Email</label>
-                    <input type="text" formControlName="bemail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.bemail.errors }" />
-                    <div *ngIf="submitted && f.bemail.errors" class="invalid-feedback">
-                        <div *ngIf="f.bemail.errors.required">Email is required</div>
-                        <div *ngIf="f.bemail.errors.bemail">Email must have valid email address</div>
+                    <input type="text" formControlName="buyermail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.buyermail.errors }" />
+                    <div *ngIf="submitted && f.buyermail.errors" class="invalid-feedback">
+                        <div *ngIf="f.buyermail.errors.required">Email is required</div>
+                        <div *ngIf="f.buyermail.errors.bemail">Email must have valid email address</div>
                     </div>
                 </div>
                    <div class="form-group">
                         <label>Password</label>
-                        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                            <div *ngIf="f.password.errors.required">Password is required</div>
-                            <div *ngIf="f.password.errors.minlength">Password must be at least 7 characters</div>
+                        <input type="password" formControlName="buyerpassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.buyerpassword.errors }" />
+                        <div *ngIf="submitted && f.buyerpassword.errors" class="invalid-feedback">
+                            <div *ngIf="f.buyerpassword.errors.required">Password is required</div>
                         </div>
                     </div>
                 <div class="text-center">

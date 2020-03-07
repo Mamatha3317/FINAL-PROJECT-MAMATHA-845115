@@ -8,15 +8,17 @@ namespace Emart.AccountService.Models
         public Buyer()
         {
             PurchaseHistory = new HashSet<PurchaseHistory>();
+            Transactions = new HashSet<Transactions>();
         }
 
-        public int Bid { get; set; }
-        public string Bname { get; set; }
-        public DateTime? CreatedDateTime { get; set; }
-        public string Bmobile { get; set; }
-        public string Bmail { get; set; }
-        public string Bpwd { get; set; }
+        public int Buyerid { get; set; }
+        public string Buyername { get; set; }
+        public DateTime? Createddatetime { get; set; }
+        public string Buyerno { get; set; }
+        public string Buyermail { get; set; }
+        public string Buyerpassword { get; set; }
 
         public virtual ICollection<PurchaseHistory> PurchaseHistory { get; set; }
+        public virtual ICollection<Transactions> Transactions { get; set; }
     }
 }

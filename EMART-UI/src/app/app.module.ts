@@ -23,8 +23,11 @@ import { LoginComponent } from './Account/login/login.component';
 import { RegisterSellerComponent } from './Account/register-seller/register-seller.component';
 import { HomeComponent } from './Account/home/home.component';
 import { RegisterBuyerComponent } from './Account/register-buyer/register-buyer.component';
-import { RegisterComponent } from './Account/register/register.component';
-
+import {HttpClientModule} from '@angular/common/http';
+import { EditprofileComponent } from './Buyer/editprofile/editprofile.component';
+import { ViewCategoryComponent } from './Admin/view-category/view-category.component';
+import { ViewSubCategoryComponent } from './Admin/view-sub-category/view-sub-category.component';
+import {EditsellerprofileComponent} from './Seller/editsellerprofile/editsellerprofile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,15 +51,21 @@ import { RegisterComponent } from './Account/register/register.component';
     RegisterSellerComponent,
     RegisterBuyerComponent,
     HomeComponent,
-    RegisterComponent,
+    EditprofileComponent,
+    ViewCategoryComponent,
+    ViewSubCategoryComponent,
+    EditsellerprofileComponent,
     
-  
+    
+    
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
 
   ],
   providers: [],

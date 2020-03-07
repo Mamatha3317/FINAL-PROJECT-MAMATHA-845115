@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Emart.BuyerService.Models;
+
+namespace Emart.BuyerService.Repositories
+{
+    public interface IBuyerRepository
+    {
+        List<Items> searchitems(string Itemname);
+        void buyitem(Transactions obj);
+        void editprofile(Buyer obj);
+        Buyer getprofile(int Buyerid);
+        List<Transactions> transactionshistory(int Buyerid);
+        List<Category> GetCategory();
+        List<SubCategory> GetSubcategory(int Categoryid);
+
+
+
+
+
+    }
+}

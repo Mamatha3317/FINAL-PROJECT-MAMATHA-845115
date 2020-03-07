@@ -17,10 +17,12 @@ namespace Emart.AccountService.Models
 
         public virtual DbSet<Buyer> Buyer { get; set; }
         public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<Discounts> Discounts { get; set; }
         public virtual DbSet<Items> Items { get; set; }
         public virtual DbSet<PurchaseHistory> PurchaseHistory { get; set; }
         public virtual DbSet<Seller> Seller { get; set; }
         public virtual DbSet<SubCategory> SubCategory { get; set; }
+        public virtual DbSet<Transactions> Transactions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -35,100 +37,126 @@ namespace Emart.AccountService.Models
         {
             modelBuilder.Entity<Buyer>(entity =>
             {
-                entity.HasKey(e => e.Bid)
-                    .HasName("PK__Buyer__C6D111C973562D42");
+                entity.Property(e => e.Buyerid).ValueGeneratedNever();
 
-                entity.Property(e => e.Bid).ValueGeneratedNever();
-
-                entity.Property(e => e.Bmail)
+                entity.Property(e => e.Buyermail)
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Bmobile)
+                entity.Property(e => e.Buyername)
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Bname)
+                entity.Property(e => e.Buyerno)
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Bpwd)
-                    .HasColumnName("bpwd")
+                entity.Property(e => e.Buyerpassword)
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
-                entity.Property(e => e.CreatedDateTime).HasColumnType("date");
+                entity.Property(e => e.Createddatetime).HasColumnType("date");
             });
 
             modelBuilder.Entity<Category>(entity =>
             {
-                entity.HasKey(e => e.Cid)
-                    .HasName("PK__Category__C1FFD861CCE1A0FC");
-
-                entity.Property(e => e.Cid).ValueGeneratedNever();
+                entity.Property(e => e.Categoryid).ValueGeneratedNever();
 
                 entity.Property(e => e.BriefDetails)
-                    .HasColumnName("brief_details")
+                    .HasColumnName("Brief_details")
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Cname)
+                entity.Property(e => e.Categoryname)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Discounts>(entity =>
+            {
+                entity.HasKey(e => e.Discountid)
+                    .HasName("PK__Discount__E43E61EE017934A8");
+
+                entity.Property(e => e.Discountid).ValueGeneratedNever();
+
+                entity.Property(e => e.Description)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.DiscountCode)
+                    .HasColumnName("Discount_code")
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.EndDate)
+                    .HasColumnName("End_date")
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Percentage)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.StartDate)
+                    .HasColumnName("Start_date")
                     .HasMaxLength(20)
                     .IsUnicode(false);
             });
 
             modelBuilder.Entity<Items>(entity =>
             {
-                entity.HasKey(e => e.Iid)
-                    .HasName("PK__items__C4962F84B76199F8");
+                entity.HasKey(e => e.Itemid)
+                    .HasName("PK__Items__727D8793A97EDAA8");
 
-                entity.ToTable("items");
-
-                entity.Property(e => e.Iid).ValueGeneratedNever();
+                entity.Property(e => e.Itemid).ValueGeneratedNever();
 
                 entity.Property(e => e.Description)
-                    .HasColumnName("description")
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
-                entity.Property(e => e.ItemName)
-                    .HasColumnName("item_name")
+                entity.Property(e => e.Imagepath)
+                    .HasColumnName("imagepath")
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Itemname)
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Price).HasColumnName("price");
 
                 entity.Property(e => e.Remarks)
-                    .HasColumnName("remarks")
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Scid).HasColumnName("SCid");
-
-                entity.Property(e => e.StockNumber)
-                    .HasColumnName("stock_number")
+                entity.Property(e => e.Stocknumber)
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.C)
+                entity.HasOne(d => d.Category)
                     .WithMany(p => p.Items)
-                    .HasForeignKey(d => d.Cid)
-                    .HasConstraintName("FK__items__Cid__2A4B4B5E");
+                    .HasForeignKey(d => d.Categoryid)
+                    .HasConstraintName("FK__Items__Categoryi__66603565");
 
-                entity.HasOne(d => d.Sc)
+                entity.HasOne(d => d.Seller)
                     .WithMany(p => p.Items)
-                    .HasForeignKey(d => d.Scid)
-                    .HasConstraintName("FK__items__SCid__2B3F6F97");
+                    .HasForeignKey(d => d.Sellerid)
+                    .HasConstraintName("FK__Items__Sellerid__2739D489");
+
+                entity.HasOne(d => d.SubCategory)
+                    .WithMany(p => p.Items)
+                    .HasForeignKey(d => d.SubCategoryid)
+                    .HasConstraintName("fk");
             });
 
             modelBuilder.Entity<PurchaseHistory>(entity =>
             {
-                entity.HasKey(e => e.Pid)
-                    .HasName("PK__Purchase__C5705938C7072E8D");
+                entity.HasKey(e => e.Purchaseid)
+                    .HasName("PK__Purchase__6B379FB6337F5C1F");
 
                 entity.ToTable("Purchase_History");
 
-                entity.Property(e => e.Pid).ValueGeneratedNever();
+                entity.Property(e => e.Purchaseid).ValueGeneratedNever();
 
                 entity.Property(e => e.DateTime)
                     .HasColumnName("Date_time")
@@ -137,7 +165,6 @@ namespace Emart.AccountService.Models
                 entity.Property(e => e.NoOfItems).HasColumnName("No_Of_Items");
 
                 entity.Property(e => e.Remarks)
-                    .HasColumnName("remarks")
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
@@ -146,33 +173,36 @@ namespace Emart.AccountService.Models
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.B)
+                entity.HasOne(d => d.Buyer)
                     .WithMany(p => p.PurchaseHistory)
-                    .HasForeignKey(d => d.Bid)
-                    .HasConstraintName("FK__Purchase_Hi__Bid__37A5467C");
+                    .HasForeignKey(d => d.Buyerid)
+                    .HasConstraintName("FK__Purchase___Buyer__6E01572D");
 
-                entity.HasOne(d => d.I)
+                entity.HasOne(d => d.Item)
                     .WithMany(p => p.PurchaseHistory)
-                    .HasForeignKey(d => d.Iid)
-                    .HasConstraintName("FK__Purchase_Hi__Iid__398D8EEE");
+                    .HasForeignKey(d => d.Itemid)
+                    .HasConstraintName("FK__Purchase___Itemi__6FE99F9F");
 
-                entity.HasOne(d => d.S)
+                entity.HasOne(d => d.Seller)
                     .WithMany(p => p.PurchaseHistory)
-                    .HasForeignKey(d => d.Sid)
-                    .HasConstraintName("FK__Purchase_Hi__Sid__38996AB5");
+                    .HasForeignKey(d => d.Sellerid)
+                    .HasConstraintName("FK__Purchase___Selle__6EF57B66");
             });
 
             modelBuilder.Entity<Seller>(entity =>
             {
-                entity.HasKey(e => e.Sid)
-                    .HasName("PK__Seller__CA1E5D78E357C04E");
-
-                entity.Property(e => e.Sid).ValueGeneratedNever();
+                entity.Property(e => e.Sellerid).ValueGeneratedNever();
 
                 entity.Property(e => e.BriefAboutCompany)
-                    .HasColumnName("brief_about_company")
+                    .HasColumnName("Brief_about_company")
                     .HasMaxLength(20)
                     .IsUnicode(false);
+
+                entity.Property(e => e.Companyname)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CreatedDate).HasColumnType("date");
 
                 entity.Property(e => e.Gstin)
                     .HasColumnName("GSTIN")
@@ -184,19 +214,19 @@ namespace Emart.AccountService.Models
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Smail)
+                entity.Property(e => e.Sellermail)
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Smobile)
+                entity.Property(e => e.Sellermobile)
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Sname)
+                entity.Property(e => e.Sellername)
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Spwd)
+                entity.Property(e => e.Sellerpassword)
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
@@ -208,15 +238,10 @@ namespace Emart.AccountService.Models
 
             modelBuilder.Entity<SubCategory>(entity =>
             {
-                entity.HasKey(e => e.Scid)
-                    .HasName("PK__SubCateg__F7F7BF149033192E");
-
-                entity.Property(e => e.Scid)
-                    .HasColumnName("SCid")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.SubCategoryid).ValueGeneratedNever();
 
                 entity.Property(e => e.BriefDetails)
-                    .HasColumnName("brief_details")
+                    .HasColumnName("Brief_details")
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
@@ -225,15 +250,40 @@ namespace Emart.AccountService.Models
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Scname)
-                    .HasColumnName("SCname")
+                entity.Property(e => e.SubCategoryname)
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.C)
+                entity.HasOne(d => d.Category)
                     .WithMany(p => p.SubCategory)
-                    .HasForeignKey(d => d.Cid)
-                    .HasConstraintName("FK__SubCategory__Cid__276EDEB3");
+                    .HasForeignKey(d => d.Categoryid)
+                    .HasConstraintName("FK__SubCatego__Categ__6383C8BA");
+            });
+
+            modelBuilder.Entity<Transactions>(entity =>
+            {
+                entity.HasKey(e => e.Transactionid)
+                    .HasName("PK__Transact__55423643C50DA6D1");
+
+                entity.Property(e => e.Transactionid).ValueGeneratedNever();
+
+                entity.Property(e => e.DateTime)
+                    .HasColumnName("Date_time")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.Remarks)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.Buyer)
+                    .WithMany(p => p.Transactions)
+                    .HasForeignKey(d => d.Buyerid)
+                    .HasConstraintName("FK__Transacti__Buyer__02FC7413");
+
+                entity.HasOne(d => d.Seller)
+                    .WithMany(p => p.Transactions)
+                    .HasForeignKey(d => d.Sellerid)
+                    .HasConstraintName("FK__Transacti__Selle__03F0984C");
             });
 
             OnModelCreatingPartial(modelBuilder);

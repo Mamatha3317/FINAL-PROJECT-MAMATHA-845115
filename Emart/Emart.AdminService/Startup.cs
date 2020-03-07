@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Emart.AdminService.Repositories;
+using Emart.AdminService.Models;
 
 namespace Emart.AdminService
 {
@@ -24,7 +26,17 @@ namespace Emart.AdminService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<EmartDBContext>();
+            services.AddTransient<IAdminRepository, AdminRepository>();
             services.AddControllers();
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options =>
+                 options.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                       );
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,7 +50,7 @@ namespace Emart.AdminService
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseCors("AllowOrigin");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

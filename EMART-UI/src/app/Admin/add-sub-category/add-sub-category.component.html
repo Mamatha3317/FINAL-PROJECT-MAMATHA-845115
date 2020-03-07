@@ -1,1 +1,53 @@
-<p>add-sub-category works!</p>
+
+<form fxLayoutAlign="center ">
+    <div class="container card col-md-4" style="background-color:lightgray; float:center">
+        <div class="card-body">
+            <form [formGroup]="addsubcategoryform" (ngSubmit)="onSubmit()">
+                <!-- <div class="form-group ">
+                    <label >SubCategory ID</label>
+                    <input type="number" formControlName="SubCategoryid" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.SubCategoryid.errors }">
+                    <div *ngIf="submitted && f.SubCategoryid.errors" class="invalid-feedback">
+                        <div *ngIf="f.SubCategoryid.errors.required">SubCategory ID is required</div>
+                    </div>
+               </div> -->
+ 
+               <div class="form-group ">
+                  <label >SubCategory Name</label>
+                  <input type="text" formControlName="SubCategoryname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.SubCategoryname.errors }">
+                  <div *ngIf="submitted && f.SubCategoryname.errors" class="invalid-feedback">
+                    <div *ngIf="f.SubCategoryname.errors.required">SubCategory Name is required</div>
+                  </div>
+               </div>
+
+                <div class="form-group ">
+                    <label >Category ID</label>
+                    <input type="number" formControlName="Categoryid" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Categoryid.errors }">
+                    <div *ngIf="submitted && f.Categoryid.errors" class="invalid-feedback">
+                        <div *ngIf="f.Categoryid.errors.required">Category ID is required</div>
+                    </div>
+               </div>
+
+                <div class="form-group ">
+                  <label >GSTIN</label>
+                  <input type="text" formControlName="GSTIN" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.GSTIN.errors }">
+                  <div *ngIf="submitted && f.GSTIN.errors" class="invalid-feedback">
+                    <div *ngIf="f.GSTIN.errors.required">GSTIN is required</div>
+                  </div>
+                </div>
+                <div class="form-group ">
+                        <label >Brief Details</label>
+                        <input type="text" formControlName="Briefdetails" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Briefdetails.errors }" />
+                        <div *ngIf="submitted && f.Briefdetails.errors" class="invalid-feedback">
+                            <div *ngIf="f.Briefdetails.errors.required">Brief Details is required</div>
+                        </div>
+                </div>
+                
+              
+                <div class="text-center">
+                    <button class="btn btn-primary mr-1">Submit</button>
+                    <!-- <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button> -->
+                </div>
+            </form>
+        </div>
+    </div>
+    
