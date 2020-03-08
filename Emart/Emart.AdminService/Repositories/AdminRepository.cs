@@ -43,37 +43,30 @@ namespace Emart.AdminService.Repositories
         {
             return _context.Category.ToList();
         }
-        public List<Category>GetCategory()
-        {
-            return _context.Category.ToList();
-        }
-        public void Deleteitem(int Categoryid)
-        {
-            Category i = _context.Category.Find(Categoryid);
-            _context.Category.Remove(i);
-            _context.SaveChanges();
-        }
-        public List<SubCategory>GetSubCategory()
+        public List<SubCategory> ViewSubCategory()
         {
             return _context.SubCategory.ToList();
         }
-        public void Deleteitems(int SubCategoryid)
+
+        public void DeleteCategory(int Categoryid)
+        {
+            Category i = _context.Category.SingleOrDefault(e=>e.Categoryid==Categoryid);
+            _context.Category.Remove(i);
+            _context.SaveChanges();
+        }
+        
+        public void DeleteSubCategory(int SubCategoryid)
         {
             SubCategory i = _context.SubCategory.Find(SubCategoryid);
             _context.SubCategory.Remove(i);
             _context.SaveChanges();
 
         }
-
-        public List<Category> GetCategory(int Categoryid)
+        public List<Category> GetCategory()
         {
-            throw new NotImplementedException();
+            return _context.Category.ToList();
         }
 
-        public List<SubCategory> GetSubCategory(int Categoryid)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
 

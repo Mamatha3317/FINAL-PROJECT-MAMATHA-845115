@@ -18,11 +18,26 @@ namespace Emart.BuyerService.Controllers
         {
             _repo = repo;
         }
+
+        [HttpGet]
+        [Route("GetById/{Buyerid}")]
+        public IActionResult GetById(int Buyerid)
+        {
+            try
+            {
+                return Ok(_repo.GetById(Buyerid));
+            }
+            catch (Exception e)
+            {
+                return NotFound(e.InnerException.Message);
+            }
+        }
+
         [HttpPost]
         [Route("Additem")]
-        public void buyitem(Transactions obj)
+        public void Additem(Transactions obj)
         {
-            _repo.buyitem(obj);
+            _repo.Additem(obj);
         }
 
         [HttpPut]
@@ -72,31 +87,43 @@ namespace Emart.BuyerService.Controllers
                 return NotFound(e.Message);
             }
         }
+       
         [HttpGet]
-        [Route("GetCategory")]
-        public IActionResult GetCategory()
+        [Route("GetAllItems")]
+        public IActionResult Get()
         {
             try
             {
-                return Ok(_repo.GetCategory());
+                return Ok(_repo.GetAllItems());
             }
             catch (Exception e)
             {
-                return NotFound(e.Message);
+                return NotFound(e.InnerException.Message);
             }
-
         }
         [HttpGet]
-        [Route("GetSubCategory/{Categoryid}")]
-        public IActionResult Getsubcategory(int Categoryid)
+        [Route("SearchByCategoryId/{Categoryid}")]
+        public IActionResult SearchByCategoryId(int Categoryid)
         {
             try
             {
-                return Ok(_repo.GetSubcategory(Categoryid));
+                return Ok(_repo.SearchByCategoryId(Categoryid));
             }
             catch (Exception e)
             {
-                return NotFound(e.Message);
+                return NotFound(e.InnerException.Message);
+            }
+        }
+
+        public void AddToCart(int Itemid)
+        {
+            try
+            {
+                _repo.AddToCart(Itemid);
+            }
+            catch (Exception e)
+            {
+                NotFound(e.Message);
             }
         }
 

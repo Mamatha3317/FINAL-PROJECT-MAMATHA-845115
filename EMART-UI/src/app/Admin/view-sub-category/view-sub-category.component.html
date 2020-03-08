@@ -13,13 +13,13 @@
                 <th>Delete</th>
             </tr>
             <tr *ngFor="let item of list">
-               <td>{{item.Categoryid}}</td>
-               <td>{{item.SubCategoryid}}</td>
-               <td>{{item.Briefdetails}}</td>
-               <td>{{item.SubCategoryname}}</td>
-               <td>{{item.GSTIN}}</td>
+               <td>{{item.categoryid}}</td>
+               <td>{{item.subCategoryid}}</td>
+               <td>{{item.briefDetails}}</td>
+               <td>{{item.subCategoryname}}</td>
+               <td>{{item.gstin}}</td>
                <td><button class="btn btn-primary mr-1" type="button" (click)="Update()">Edit</button></td>
-               <td><button class="btn btn-primary mr-1" type="button" (click)="Delete(item.cid)">Delete</button></td>
+               <td><button class="btn btn-danger mr-1" type="button" (click)="Delete(item.Catgeoryid)">Delete</button></td>
             </tr>
         </table>
     </div>

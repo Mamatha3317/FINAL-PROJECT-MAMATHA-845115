@@ -4,6 +4,7 @@ import { Item } from '../Models/item';
 import {Observable} from 'rxjs';
 import { stringify } from 'querystring';
 import { SubCategory } from '../Models/sub-category';
+import {Category} from '../Models/category';
 
 const Requestheaders={headers:new HttpHeaders({
   'content-type':'application/json',
@@ -18,7 +19,7 @@ url:string='http://localhost:60952/Item/'
   constructor(private http:HttpClient) { }
   public Additem(item:Item):Observable<any>
   {
-    return this.http.post<Item>(this.url+'Additem',JSON.stringify(Item),Requestheaders)
+    return this.http.post<Item>(this.url+'Additem/',JSON.stringify(item),Requestheaders)
   }
   public Getitems(itemid:Number):Observable<Item>
   {
@@ -41,12 +42,11 @@ url:string='http://localhost:60952/Item/'
      return this.http.get<Item[]>(this.url+'GetAllItems',Requestheaders);
    }
    public GetCategory():Observable<any>
-  {
-    return this.http.get<any>(this.url+'GetCategory/',Requestheaders);
-  }
-  public GetSubCategory(itemid:number):Observable<any>
-  {
-    return this.http.get<any>(this.url+'Item/GetSubCategory/'+itemid,Requestheaders);
-  }
-
+   {
+     return this.http.get<Category>(this.url+'GetCategory',Requestheaders);
+   }
+ public GetSubCategory(categoryid:number):Observable<any>
+   {
+     return this.http.get<any>(this.url+'GetSubCategory/'+categoryid,Requestheaders);
+   }
 }

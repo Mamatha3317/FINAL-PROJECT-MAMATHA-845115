@@ -12,7 +12,9 @@ namespace Emart.SellerService.Repositories
         void Additem(Items obj);
         Items GetItems(int Itemid);
         void Updateitem(Items obj);
-        List<Items> Viewitems(int Itemid);
+        List<Items> Viewitems(int Sellerid);
         List<Items> GetAllItems();
+        List<Category> GetCategory();
+        List<SubCategory> GetSubCategory(int Categoryid);
     }
 }

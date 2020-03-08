@@ -15,7 +15,7 @@ item:Category;
 submitted:false;
 list:Category[];
   constructor(private builder:FormBuilder,private service:AdminService) {
-    this.service.GetCategory().subscribe(res=>{
+    this.service.ViewCategory().subscribe(res=>{
       this.list=res;
       console.log(this.list);
     },err=>{
@@ -26,9 +26,9 @@ list:Category[];
 
   ngOnInit() {
     this.itemform=this.builder.group({
-      Categoryid:['',[Validators.required,Validators.pattern("^[0-9]$")]],
-      Categoryname:['',Validators.required],
-      Briefdetails:['',Validators.required],
+      categoryid:['',[Validators.required,Validators.pattern("^[0-9]$")]],
+      categoryname:['',Validators.required],
+      briefDetails:['',Validators.required],
     })
   }
   get f() { return this.itemform.controls; }
@@ -39,10 +39,10 @@ list:Category[];
       this.itemform.reset();
   }
 
- Delete(Categoryid:any)
+ Delete(categoryid:number)
  {
     
-   this.service.DeleteCategory(Categoryid).subscribe(res=>{
+   this.service.DeleteCategory(categoryid).subscribe(res=>{
      console.log('record deleted');
 
  },err=>{

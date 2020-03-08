@@ -14,13 +14,17 @@ namespace Emart.BuyerService.Repositories
             _context = context;
 
         }
-        public void buyitem(Transactions obj)
+        public void Additem(Transactions obj)
         {
             _context.Transactions.Add(obj);
             _context.SaveChanges();
 
         }
+        public Buyer GetById(int Buyerid)
 
+        {
+            return _context.Buyer.Find(Buyerid);
+        }
         public void editprofile(Buyer obj)
         {
             _context.Update(obj);
@@ -28,10 +32,7 @@ namespace Emart.BuyerService.Repositories
 
         }
 
-        public List<Category> GetCategory()
-        {
-            return _context.Category.ToList();
-        }
+        
 
         public Buyer getprofile(int Buyerid)
         {
@@ -50,9 +51,19 @@ namespace Emart.BuyerService.Repositories
             return _context.Transactions.Where(e => e.Buyerid == Buyerid).ToList();
         }
 
-        List<SubCategory> IBuyerRepository.GetSubcategory(int Categoryid)
+
+        public List<Items> GetAllItems()
         {
-            return _context.SubCategory.Where(e => e.Categoryid == Categoryid).ToList();
+            return _context.Items.ToList();
+        }
+
+        List<Items> IBuyerRepository.SearchByCategoryId(int Categoryid)
+        {
+            return _context.Items.Where(e => e.Categoryid == Categoryid).ToList();
+        }
+        public List<Items> AddToCart(int Itemid)
+        {
+            return _context.Items.Where(e => e.Itemid ==Itemid ).ToList();
         }
     }
 }

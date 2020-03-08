@@ -17,29 +17,41 @@ const Requestheaders={headers:new HttpHeaders({
 export class BuyerService {
   url:string='http://localhost:60952/Buyer/'
   constructor(private http:HttpClient) {}
+   
+  // public Additem(Transactions:transactionHistory):Observable<any>
+  // {
+  //   return this.http.post<any>(this.url+'Additem',JSON.stringify(Transactions),Requestheaders);
+  // }
   public editprofile(item:Buyer):Observable<any>
     {
-      return this.http.put<any>(this.url+'editprofile',JSON.stringify(Buyer),Requestheaders)
+      return this.http.put<Buyer>(this.url+'editprofile',JSON.stringify(item),Requestheaders)
     }
-    public getprofile(buyerid:number):Observable<any>
-  {
-    return this.http.get<any>(this.url+'getprofile/'+buyerid,Requestheaders);
-  }
-
-    public GetDetails():Observable<any>
+  public getprofile(buyerid:number):Observable<any>
     {
-      return this.http.get<Seller>(this.url+'GetAllItems')
-    }
-    public GetCategory():Observable<any>
-    {
-      return this.http.get<any>(this.url+'GetCategory'+Requestheaders);
-    }
-    public GetSubCategory(Categoryid:number):Observable<any>
-    {
-      return this.http.get<any>(this.url+'GetSubCategory/'+Categoryid,Requestheaders);
-    }
-    public searchitems(itemname:string):Observable<any>
+      return this.http.get<any>(this.url+'getprofile/'+buyerid,Requestheaders);
+    } 
+  
+  public searchitems(itemname:string):Observable<any>
     {
       return this.http.get<any>(this.url+'searchitems/'+itemname,Requestheaders);
     }
+  public GetAllItems():Observable<any>
+  {
+    return this.http.get<any>(this.url+'GetAllItems',Requestheaders);
+  }
+  public SearchByCategoryId(Categoryid:number):Observable<any>
+  {
+    return this.http.get<any>(this.url+'SearchByCategoryId/'+Categoryid,Requestheaders);
+  }
+  
+  public TransactionHistory(buyerid:number):Observable<any>
+  {
+    return this.http.post<any>(this.url+'TransactionHistory/'+buyerid,Requestheaders);
+  }
+  
+  public AddToCart():Observable<any>
+  {
+    return this.http.get<any>(this.url+'GetAllItems',Requestheaders);
+  }
+ 
   }

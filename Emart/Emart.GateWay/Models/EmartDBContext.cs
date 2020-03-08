@@ -16,6 +16,7 @@ namespace Emart.GateWay.Models
         }
 
         public virtual DbSet<Buyer> Buyer { get; set; }
+        public virtual DbSet<Cart> Cart { get; set; }
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Discounts> Discounts { get; set; }
         public virtual DbSet<Items> Items { get; set; }
@@ -56,6 +57,23 @@ namespace Emart.GateWay.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.Createddatetime).HasColumnType("date");
+            });
+
+            modelBuilder.Entity<Cart>(entity =>
+            {
+                entity.ToTable("cart");
+
+                entity.Property(e => e.Cartid)
+                    .HasColumnName("cartid")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Description)
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Imagepath)
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<Category>(entity =>

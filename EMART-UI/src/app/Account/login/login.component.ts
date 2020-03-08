@@ -61,6 +61,7 @@ export class LoginComponent implements OnInit {
     {
       localStorage.setItem('token',token.token)
     localStorage.setItem("buyerid",token.buyerid.toString());
+
       this.route.navigateByUrl("buyer-landing-page")
     }
     else{
@@ -78,7 +79,8 @@ this.services.SLogin(name,pwd).subscribe(res=>{token=res;console.log(token)
   if(token.message=="success")
   {
     localStorage.setItem('token',token.token)
-   // localStorage.setItem("Sellerid",token.Sellerid.toString());
+    //localStorage.setItem("Sellerid",token.Sellerid.toString());
+
     // localStorage.setItem("username",this.seller.username);
     // localStorage.setItem("password",this.seller.password);
     this.route.navigateByUrl("seller-landing-page")

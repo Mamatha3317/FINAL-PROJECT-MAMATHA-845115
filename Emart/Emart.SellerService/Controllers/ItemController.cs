@@ -33,7 +33,7 @@ namespace Emart.SellerService.Controllers
             }
         }
         [HttpGet]
-        [Route("ViewItems/{Sellerid}")]
+        [Route("Viewitems/{Sellerid}")]
         public IActionResult viewitems(int Sellerid)
         {
             try
@@ -94,6 +94,34 @@ namespace Emart.SellerService.Controllers
             {
                 return NotFound(e.Message);
 
+            }
+        }
+        [HttpGet]
+        [Route("GetCategory")]
+        public IActionResult GetCategory()
+        {
+            try
+            {
+                return Ok(_repo.GetCategory());
+            }
+            catch (Exception e)
+            {
+                return NotFound(e.Message);
+            }
+
+        }
+        [HttpGet]
+        [Route("GetSubCategory/{Categoryid}")]
+        public IActionResult GetSubCategory(int Categoryid)
+        {
+            try
+            {
+
+                return Ok(_repo.GetSubCategory(Categoryid));
+            }
+            catch (Exception e)
+            {
+                return NotFound(e.Message);
             }
         }
 

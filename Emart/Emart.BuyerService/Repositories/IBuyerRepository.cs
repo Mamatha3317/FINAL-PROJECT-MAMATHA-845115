@@ -9,12 +9,16 @@ namespace Emart.BuyerService.Repositories
     public interface IBuyerRepository
     {
         List<Items> searchitems(string Itemname);
-        void buyitem(Transactions obj);
+        Buyer GetById(int Buyerid);
+        void Additem(Transactions obj);
         void editprofile(Buyer obj);
         Buyer getprofile(int Buyerid);
         List<Transactions> transactionshistory(int Buyerid);
-        List<Category> GetCategory();
-        List<SubCategory> GetSubcategory(int Categoryid);
+        
+        List<Items> GetAllItems();
+        List<Items> SearchByCategoryId(int Categoryid);
+        List<Items> AddToCart(int Itemid);
+       
 
 
 

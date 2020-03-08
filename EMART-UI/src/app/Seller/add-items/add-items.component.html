@@ -1,31 +1,37 @@
-<form fxLayoutAlign="center start">
-    <div class="card m-3">
-        <div class="card-body">
+<style>
+    label{
+        color:white
+    }
+  
+   
+</style>
+<div class="container card col-md-3"  id="u" style="height: 300;background-color:thistle;">
+    <div class="card-body" >
             <form [formGroup]="additemform" (ngSubmit)="onSubmit()">
                 
                 
                 <div class="form-group">
                   <label style="color: black;">Choose Category</label>
                     <select formControlName="categoryid" class="form-control" (change)="GetSubCategory()">
-                        <option *ngFor="let item of clist" value="{{item.categoryid}}">{{item.Categoryname}}</option>   
+                        <option *ngFor="let item of clist" value="{{item.categoryid}}">{{item.categoryname}}</option>   
                     </select>
                 </div>
      
                 <div class="form-group">
                     <label style="color:black;">Choose SubCategory</label>                    
                     <select formControlName="subCategoryid" class="form-control">
-                        <option *ngFor="let item1 of slist" value="{{item1.subCatgeoryid}}">{{item1.subcategoryname}}</option>   
+                        <option *ngFor="let item1 of sclist" value="{{item1.subCategoryid}}">{{item1.subCategoryname}}</option>   
                 </select>
                 </div>
                 <div class="form-group ">
-                    <label>Itemname</label>
+                    <label style="color:black;">Itemname</label>
                     <input type="text" formControlName="itemname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemname.errors }" />
                     <div *ngIf="submitted && f.itemname.errors" class="invalid-feedback">
                         <div *ngIf="f.itemname.errors.required">Itemname is required</div>
                     </div>
                 </div>
                 <div class="form-group ">
-                        <label>Price</label>
+                        <label style="color:black;">Price</label>
                         <input type="text" formControlName="price" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.price.errors }" />
                         <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
                             <div *ngIf="f.price.errors.required">Price is required</div>
@@ -33,25 +39,25 @@
                 </div>
                 
                 <div class="form-group ">
-                    <label>Description</label>
+                    <label style="color:black;">Description</label>
                     <input type="text" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
                    <div *ngIf="submitted && f.description.errors" class="invalid-feedback"> 
                        <div *ngIf="f.description.errors.required">Enter Description</div>
                     </div> 
                 </div>
                 <div class="form-group">
-                    <label>Upload image </label>
-                    <input type="file" (change)="fileEvent($event)" />
+                    <label style="color:black;">Upload image </label>
+                   <div> <input type="file" (change)="fileEvent($event)" /></div>
                  </div>
                 <div class="form-group ">
-                    <label>Stock Number</label>
+                    <label style="color:black;">Stock Number</label>
                     <input type="text" formControlName="stocknumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.stocknumber.errors }" />
                     <div *ngIf="submitted && f.stocknumber.errors" class="invalid-feedback">
                         <div *ngIf="f.stocknumber.errors.required">Enter Stock number </div>
                     </div>
                </div>
                <div class="form-group ">
-                   <label>Remarks</label>
+                   <label style="color:black;">Remarks</label>
                    <input type="text" formControlName="remarks" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.remarks.errors }" />
                   <div *ngIf="submitted && f.remarks.errors" class="invalid-feedback">
                       <div *ngIf="f.remarks.errors.required">Enter Remarks</div>
@@ -61,9 +67,9 @@
                     <button class="btn btn-primary mr-1">Submit</button>
               </div>
             </form>
-        </div>
     </div>
-</form>
+</div>
+        
     
     
     

@@ -25,10 +25,10 @@
       background-color: #2196F3;
       color: white;
     }
-    </style>
-    <body>
-    <main>
-        <section>
+ </style>
+    <div class="txt">
+      <main>
+         <section>
       
             <div class="div1" style="background-color:skyblue;">
                 <a  [routerLink]="'add-items'" routerLinkActive="router-link-active" >Add Items</a>
@@ -36,14 +36,15 @@
                 <a  [routerLink]="'view-profile'" routerLinkActive="router-link-active">View Profile</a>
                 <a [routerLink]="'view-reports'" routerLinkActive="router-link-active">View Reports</a>
                 <a (click)="logout()">LOGOUT</a>
-        </div>
+            </div>
     
              <div>
                 <router-outlet></router-outlet>
              </div>
           
              
-        </section>
-    </main>   
+          </section>
+       </main> 
+    </div>  
     
-    </body>
+  

@@ -3,41 +3,44 @@
         color:black
     }
 </style>
-<div class="container card col-md-4" style="height: 300;background-color:transparent;">
-    <div class="card-body" >
-        <form [formGroup]="buyerregisterform" (click)="onSubmit()"  >
-            
-            <div class="form-group">
-                    <label>Buyer Name</label>
-                    <input type="text" formControlName="buyername" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.buyername.errors }" />
-                    <!-- <div *ngIf="submitted && f.buyername.errors" class="invalid-feedback">
-                        <div *ngIf="f.buyername.errors.required">Name is required</div>
-                    </div> -->
-             </div>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+<div class="container card col-md-4" style="height: 500;background-color:mediumaquamarine;">          
+            <div class="container" >
+                <form [formGroup]="buyerregisterform" (ngSubmit)="onSubmit()"  >
+                    
+                    <div class="form-group">
+                            <label>Buyer Name</label>
+                            <input type="text" formControlName="buyername" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.buyername.errors }" />
+                            <!-- <div *ngIf="submitted && f.buyername.errors" class="invalid-feedback">
+                                <div *ngIf="f.buyername.errors.required">Name is required</div>
+                            </div> -->
+                    </div>
 
-            
-          <div class="form-group">
-                <label>Mobile</label>
-                <input type="text" value="+91" readonly size="2"/><input type="number" formControlName="buyerno" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.buyerno.errors }" />
-                <!-- <div *ngIf="submitted && f.buyerno.errors" class="invalid-feedback">
-                    <div *ngIf="f.buyerno.errors.required">Mobile no is required</div>
-                    <div *ngIf="f.buyerno.errors.pattern">Mobile no Must be Valid</div>
-                </div> -->
-            
-         </div>
-            <div class="form-group">
-                <label>Email</label>
-                <input type="text" formControlName="buyermail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.buyermail.errors }" />
-                <!-- <div *ngIf="submitted && f.buyermail.errors" class="invalid-feedback">
-                    <div *ngIf="f.buyermail.errors.required">Email is required</div>
-                    <div *ngIf="f.buyermail.errors.semail">Email must be a valid email address</div>
-                </div> -->
+                    
+                <div class="form-group">
+                        <label>Mobile</label>
+                        <input type="text" value="+91" readonly size="2"/><input type="number" formControlName="buyerno" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.buyerno.errors }" />
+                        <!-- <div *ngIf="submitted && f.buyerno.errors" class="invalid-feedback">
+                            <div *ngIf="f.buyerno.errors.required">Mobile no is required</div>
+                            <div *ngIf="f.buyerno.errors.pattern">Mobile no Must be Valid</div>
+                        </div> -->
+                    
+                </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" formControlName="buyermail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.buyermail.errors }" />
+                        <!-- <div *ngIf="submitted && f.buyermail.errors" class="invalid-feedback">
+                            <div *ngIf="f.buyermail.errors.required">Email is required</div>
+                            <div *ngIf="f.buyermail.errors.semail">Email must be a valid email address</div>
+                        </div> -->
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn btn-primary mr-1">Update Profile</button>
+                </div>
+                </form>
             </div>
-              
-            <div class="text-center">
-                <button class="btn btn-primary mr-1">Edit Profile</button>
-          </div>
-        </form>
-    </div>
-</div>
-
+            </div>

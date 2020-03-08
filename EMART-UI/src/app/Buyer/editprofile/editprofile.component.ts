@@ -51,8 +51,7 @@ export class EditprofileComponent implements OnInit {
   
   onSubmit()
   {
-    this.submitted= true;
-    {
+
     let buyerid=Number(localStorage.getItem("buyerid"));
       this.buyer.buyername=this.buyerregisterform.value["buyername"];
       this.buyer.buyermail=this.buyerregisterform.value["buyermail"];
@@ -71,4 +70,4 @@ export class EditprofileComponent implements OnInit {
     }
   }     
      
-}
+

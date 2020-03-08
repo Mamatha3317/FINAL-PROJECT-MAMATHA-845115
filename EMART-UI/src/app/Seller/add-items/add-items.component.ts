@@ -26,7 +26,7 @@ selectedFile:File=null;
 category:Category;
 
   constructor(private formbuilder:FormBuilder,private route:Router,private services:ItemService,private buyerservices:BuyerService,private adminservices:AdminService) {
-  this.buyerservices.GetCategory().subscribe(res=>{
+  this.services.GetCategory().subscribe(res=>{
     this.clist=res;
     console.log(this.clist);
   })
@@ -34,9 +34,9 @@ category:Category;
   ngOnInit() {
     this.additemform=this.formbuilder.group({
       itemid:['',[Validators.required]],
-      categoryid:['',[Validators.required,Validators.pattern("[0-9]$")]],
-      subCategoryid:['',[Validators.required,Validators.pattern("[0-9]$")]],
-      sellerid:['',[Validators.required,Validators.pattern("[0-9]$")]],
+      categoryid:['',[Validators.required]],
+      subCategoryid:['',[Validators.required]],
+      sellerid:['',[Validators.required]],
       price:['',[Validators.required,]],
       itemname:['',[Validators.required,]],
       description:['',[Validators.required,]],
@@ -51,7 +51,7 @@ get f(){return this.additemform.controls}
 onSubmit()
 {
     this.submitted=true;
-    alert("success");
+   
     let sellerid=(localStorage.getItem("sellerid"))
     this.item=new Item();
     this.item.itemid=Math.round(Math.random()*1000);
@@ -63,18 +63,23 @@ onSubmit()
     this.item.description=this.additemform.value["description"];
     this.item.stocknumber=this.additemform.value["stocknumber"];
     this.item.remarks=this.additemform.value["remarks"];
+    this.item.imagepath=this.imagepath;
+
     console.log(this.item);
     this.services.Additem(this.item).subscribe(res=>
       {
         console.log('Items added');
-      },err=>{console.log(err)})
-    
+      },err=>{
+        console.log(err);
+
+      })
+      alert("success");
   }
   GetSubCategory()
  {
     let categoryid=this.additemform.value["categoryid"];
     console.log(categoryid);
-    this.buyerservices.GetSubCategory(categoryid).subscribe(res=>{
+    this.services.GetSubCategory(categoryid).subscribe(res=>{
       this.sclist=res;
       console.log(this.sclist);
   })

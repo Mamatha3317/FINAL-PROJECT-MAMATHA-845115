@@ -24,9 +24,17 @@ namespace Emart.AdminService.Controllers
         {
             _repo.AddCategory(obj);
         }
+
+        [HttpPost]
+        [Route("AddSubCategory")]
+        public void Addsubcategory(SubCategory obj)
+        {
+            _repo.AddSubCategory(obj);
+        }
+
         [HttpGet]
         [Route("ViewCategory")]
-        public IActionResult view()
+        public IActionResult viewCategory()
         {
             try
             {
@@ -37,12 +45,22 @@ namespace Emart.AdminService.Controllers
                 return NotFound(e.Message);
             }
         }
-        [HttpPost]
-        [Route("AddSubCategory")]
-        public void Addsubcategory(SubCategory obj)
+
+        [HttpGet]
+        [Route("ViewSubCategory")]
+        public IActionResult viewSubCategory()
         {
-            _repo.AddSubCategory(obj);
+            try
+            {
+                return Ok(_repo.ViewSubCategory());
+            }
+            catch (Exception e)
+            {
+                return NotFound(e.Message);
+            }
         }
+
+       
         [HttpGet]
         [Route("GetCategory/{Categoryid}")]
         public IActionResult GetCategory(int Categoryid)
@@ -54,6 +72,19 @@ namespace Emart.AdminService.Controllers
         public IActionResult GetSubCategory(int SubCategoryid)
         {
             return Ok(_repo.getby(SubCategoryid));
+        }
+
+        [HttpDelete]
+        [Route("DeleteCategory/{Categoryid}")]
+        public void DeleteCategory(int Categoryid)
+        {
+            _repo.DeleteCategory(Categoryid);
+        }
+        [HttpDelete]
+        [Route("DeleteSubCategory/{SubCategoryid}")]
+        public void DeleteSubCategory(int SubCategoryid)
+        {
+            _repo.DeleteSubCategory(SubCategoryid);
         }
 
     }

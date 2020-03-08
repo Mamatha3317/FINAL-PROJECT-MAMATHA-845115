@@ -16,8 +16,8 @@ export class ViewSubCategoryComponent implements OnInit {
   list:SubCategory[];
 
   constructor(private builder:FormBuilder,private service:AdminService) { 
-    this.service.GetSubCategory().subscribe(res=>{
-      // this.list=res;
+    this.service.ViewSubCategory().subscribe(res=>{
+      this.list=res;
       console.log(this.list);
     }, err=>{
       console.log(err);
@@ -26,20 +26,27 @@ export class ViewSubCategoryComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.itemform=this.builder.group({
+    categoryid:['',Validators.required],
+    subCategoryid:['',Validators.required],
+    subCategoryname:['',Validators.required],
+    briefDetails:['',Validators.required],
+    gstin:['',Validators.required],
+    });
   }
   get f() { return this.itemform.controls; }
 
-  onSubmit() {
-      this.submitted = true;
-  }
+  // onSubmit() {
+  //     this.submitted = true;
+  // }
   onReset() {
       this.submitted = false;
       this.itemform.reset();
   }
-  Delete(SubCategoryid:any)
+  Delete(subCategoryid:number)
  {
     
-   this.service.DeleteSubCategory(SubCategoryid).subscribe(res=>{
+   this.service.DeleteSubCategory(subCategoryid).subscribe(res=>{
      console.log('record deleted');
 
  },err=>{

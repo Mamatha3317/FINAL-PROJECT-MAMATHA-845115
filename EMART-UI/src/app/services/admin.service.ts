@@ -24,22 +24,30 @@ export class AdminService {
     {
     return this.http.delete<Category>(this.url+'DeleteCategory/'+Categoryid,Requestheaders);
     }
-  public GetCategory():Observable<Category[]>
+  public GetCategory(Categoryid:number):Observable<Category>
     {
-      return this.http.get<Category[]>(this.url+'GetCategory')
+      return this.http.get<Category>(this.url+'GetCategory/'+Categoryid,Requestheaders);
     }
   public AddSubCategory(subcategory:SubCategory):Observable<any>
     {
-      return this.http.post(this.url+'AddSubCategory/',JSON.stringify(subcategory),Requestheaders)
+      return this.http.post(this.url+'AddSubCategory/',JSON.stringify(subcategory),Requestheaders);
     }
     
   public DeleteSubCategory(SubCategoryid:Number):Observable<SubCategory>
   {
     return this.http.delete<SubCategory>(this.url+'DeleteSubCategory/'+SubCategoryid,Requestheaders);
   }
-  public GetSubCategory():Observable<any>
+  public GetSubCategory(SubCategoryid:number):Observable<SubCategory>
    {
-     return this.http.get<any>(this.url+'GetSubCategory');
+     return this.http.get<SubCategory>(this.url+'GetSubCategory/'+SubCategoryid,Requestheaders);
+   }
+   public ViewCategory():Observable<Category[]>
+   {
+     return this.http.get<Category[]>(this.url+'ViewCategory/')
+   }
+   public ViewSubCategory():Observable<SubCategory[]>
+   {
+     return this.http.get<SubCategory[]>(this.url+'ViewSubCategory/')
    }
 }
 
