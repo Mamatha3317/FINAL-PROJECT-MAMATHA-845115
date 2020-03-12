@@ -53,11 +53,11 @@ export class BuyerService {
   
   public AddToCart(cart:cart):Observable<any>
   {
-    return this.http.post<any>(this.url+'AddToCart/',JSON.stringify(cart),Requestheaders)
+    return this.http.post<any>(this.url+'AddToCart',JSON.stringify(cart),Requestheaders)
   }
-  public DeleteFromCart(Cartid:number):Observable<cart>
+  public DeleteFromCart(cartid:number):Observable<cart>
   {
-    return this.http.delete<cart>(this.url+'Deletefromcart/'+Cartid,Requestheaders)
+    return this.http.delete<cart>(this.url+'Deletefromcart/'+cartid,Requestheaders)
   }
   public GetCart(buyerid:number):Observable<any>
   {

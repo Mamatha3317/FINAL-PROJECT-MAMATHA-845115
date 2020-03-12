@@ -37,11 +37,11 @@ export class ViewCartComponent implements OnInit {
         localStorage.setItem('item1',JSON.stringify(this.item));
         this.route.navigateByUrl('buyer-landing-page/purchase-history');
   }
-  Remove(Cartid:number){
-  let id=Cartid;
+  Remove(cartid:number){
+  let id=cartid;
     alert("deleted")
-    console.log(Cartid);
-    this.service.DeleteFromCart(Cartid).subscribe(res=>{
+    console.log(cartid);
+    this.service.DeleteFromCart(cartid).subscribe(res=>{
       console.log('Item Removed from Cart');
       alert('Item Removed from Cart');
     })

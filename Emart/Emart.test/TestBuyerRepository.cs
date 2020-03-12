@@ -13,7 +13,7 @@ namespace Emart.test
     {
         BuyerRepository _repo;
         [SetUp]
-        public void  Setup()
+        public void Setup()
         {
             _repo = new BuyerRepository(new EmartDBContext());
         }
@@ -43,15 +43,80 @@ namespace Emart.test
             buyer.Buyername = "buyer4";
             _repo.editprofile(buyer);
             Buyer buyer1 = _repo.getprofile(4);
-            Assert.AreSame(buyer,buyer1);
+            Assert.AreSame(buyer, buyer1);
 
         }
         [Test]
-        public void SearchByCategoryId()
+        public void TestSearchByCategoryId()
         {
+            var x = _repo.SearchByCategoryId(2);
+            Assert.IsNotNull(x);
+        }
+        [Test]
+        [Description("Get iteam  search by name")]
+        public void Testsearchitems()
+        {
+            var x = _repo.searchitems("toys");
+            Assert.NotNull(x);
+            //   Assert.Greater(x.Count, 0);
+        }
+        [Test]
+        [Description("Buy product")]
+        public void TestAddItem()
+        {
+            _repo.Additem(new Transactions()
+            {
+                Buyerid = 1,
+                DateTime = System.DateTime.Now,
+                Transactiontype = "credit",
+                Transactionid = 786,
+
+                Sellerid = 1,
+                Remarks = "gud",
+
+            });
+            var x = _repo.transactionshistory(2);
+            Assert.IsNotNull(x);
 
         }
+        [Test]
+        public void TestGetCart()
+        {
+            var x = _repo.GetCart(1);
+            Assert.NotNull(x);
+            Assert.Greater(x.Count, 0);
+        }
+        [Test]
+        
+        [Description("test add to cart")]
+        public void TestAddToCart()
+        {
+            _repo.AddToCart(new Cart()
+            {
+                Cartid = 33,
+                Buyerid = 1,
+                Categoryid = 3,
+                Description = "notbad",
+                Itemid = 55,
+                Imagepath = "46.jpg",
+               
+                Price = 785,
+                Sellerid = 1,
+                Stocknumber = 1,
+                SubCategoryid = 3,
 
+            });
+            var x = _repo.GetCart(2);
+            Assert.IsNotNull(x);
+
+
+        }
+        [Test]
+        public void TestDeleteFromCart()
+        {
+            _repo.DeleteFromCart(3);
+        }
 
     }
 }
+

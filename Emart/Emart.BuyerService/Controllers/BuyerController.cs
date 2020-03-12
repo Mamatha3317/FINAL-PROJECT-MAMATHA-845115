@@ -75,12 +75,12 @@ namespace Emart.BuyerService.Controllers
             }
         }
         [HttpGet]
-        [Route("Transactionhistory/{Buyerid}")]
-        public IActionResult transactionhistory(int Buyerid)
+        [Route("TransactionHistory/{Buyerid}")]
+        public IActionResult TransactionHistory(int Buyerid)
         {
             try
             {
-                return Ok(_repo.transactionshistory(Buyerid));
+                return Ok(_repo.TransactionHistory(Buyerid));
             }
             catch (Exception e)
             {

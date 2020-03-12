@@ -75,7 +75,7 @@ buy(item2:Item)
 {
   console.log(item2);
   localStorage.setItem('item1',JSON.stringify(item2));
-  this.route.navigateByUrl('buyerslandingpage/purchasepage');
+  this.route.navigateByUrl('buyer-landing-page/purchase-history');
 
 }
 AddtoCart(item2:Item){

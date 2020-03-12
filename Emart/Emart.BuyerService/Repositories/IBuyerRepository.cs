@@ -13,7 +13,7 @@ namespace Emart.BuyerService.Repositories
         void Additem(Transactions obj);
         void editprofile(Buyer obj);
         Buyer getprofile(int Buyerid);
-        List<Transactions> transactionshistory(int Buyerid);
+        List<Transactions> TransactionHistory(int Buyerid);
         
         List<Items> GetAllItems();
         List<Items> SearchByCategoryId(int Categoryid);

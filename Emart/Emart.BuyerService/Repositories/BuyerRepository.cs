@@ -46,7 +46,7 @@ namespace Emart.BuyerService.Repositories
             return _context.Items.Where(e => e.Itemname == Itemname).ToList();
         }
 
-        public List<Transactions> transactionshistory(int Buyerid)
+        public List<Transactions>TransactionHistory(int Buyerid)
         {
             return _context.Transactions.Where(e => e.Buyerid == Buyerid).ToList();
         }
@@ -57,7 +57,9 @@ namespace Emart.BuyerService.Repositories
             return _context.Items.ToList();
         }
 
-        List<Items> IBuyerRepository.SearchByCategoryId(int Categoryid)
+
+
+       public List<Items>SearchByCategoryId(int Categoryid)
         {
             return _context.Items.Where(e => e.Categoryid == Categoryid).ToList();
         }
