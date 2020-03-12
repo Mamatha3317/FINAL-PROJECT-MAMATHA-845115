@@ -3,7 +3,7 @@ export class Item {
       categoryid:number;
       subCategoryid:number;
       sellerid:number;
-      price:string;
+      price:number;
       itemname:string;
       description:string;
       stocknumber:string;

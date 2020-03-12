@@ -58,7 +58,7 @@ onSubmit()
     this.item.categoryid=Number(this.additemform.value["categoryid"]);
     this.item.subCategoryid=Number(this.additemform.value["subCategoryid"]);
     this.item.sellerid=this.additemform.value["sellerid"];
-    this.item.price=this.additemform.value["price"];
+    this.item.price=Number(this.additemform.value["price"]);
     this.item.itemname=this.additemform.value["itemname"];
     this.item.description=this.additemform.value["description"];
     this.item.stocknumber=this.additemform.value["stocknumber"];

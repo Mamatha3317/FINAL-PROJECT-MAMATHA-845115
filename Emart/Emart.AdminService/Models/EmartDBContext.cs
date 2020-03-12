@@ -293,6 +293,10 @@ namespace Emart.AdminService.Models
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
+                entity.Property(e => e.Transactiontype)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
                 entity.HasOne(d => d.Buyer)
                     .WithMany(p => p.Transactions)
                     .HasForeignKey(d => d.Buyerid)

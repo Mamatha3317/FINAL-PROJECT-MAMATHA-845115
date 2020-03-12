@@ -19,15 +19,15 @@ url:string='http://localhost:60952/Item/'
   constructor(private http:HttpClient) { }
   public Additem(item:Item):Observable<any>
   {
-    return this.http.post<Item>(this.url+'Additem/',JSON.stringify(item),Requestheaders)
+    return this.http.post<Item>(this.url+'Additem',JSON.stringify(item),Requestheaders);
   }
   public Getitems(itemid:Number):Observable<Item>
   {
     return this.http.get<Item>(this.url+'Getitems/'+itemid,Requestheaders);
   }
-  public Viewitems(Sellerid:Number):Observable<any>
+  public Viewitems(sellerid:Number):Observable<any>
   {
-    return this.http.get<Item>(this.url+'Viewitems/'+Sellerid,Requestheaders);
+    return this.http.get<Item>(this.url+'Viewitems/'+sellerid,Requestheaders);
   }
   public Deleteitems(itemid:Number):Observable<any>
   {

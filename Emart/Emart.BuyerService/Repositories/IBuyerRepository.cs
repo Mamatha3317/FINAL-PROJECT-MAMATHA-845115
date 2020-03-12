@@ -17,8 +17,10 @@ namespace Emart.BuyerService.Repositories
         
         List<Items> GetAllItems();
         List<Items> SearchByCategoryId(int Categoryid);
-        List<Items> AddToCart(int Itemid);
-       
+        void AddToCart(Cart obj);
+        void DeleteFromCart(int Cartid);
+        List<Cart> GetCart(int Buyerid);
+
 
 
 

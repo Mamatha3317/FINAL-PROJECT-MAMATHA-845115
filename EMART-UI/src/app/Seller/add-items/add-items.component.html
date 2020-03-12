@@ -5,7 +5,7 @@
   
    
 </style>
-<div class="container card col-md-3"  id="u" style="height: 300;background-color:thistle;">
+<div class="container card col-md-3"  id="u" style="height: 100% 100%;background-color:thistle;">
     <div class="card-body" >
             <form [formGroup]="additemform" (ngSubmit)="onSubmit()">
                 
@@ -30,6 +30,14 @@
                         <div *ngIf="f.itemname.errors.required">Itemname is required</div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label style="color:black;">SellerId</label>
+                    <input type="number" formControlName="sellerid" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.sellerid.errors }">
+                       <div *ngIf="submitted && f.sellerid.errors" class="invalid-feedback">
+                        <div *ngIf="f.sellerid.errors.required">ID is required</div>
+                    </div>
+            </div>
+
                 <div class="form-group ">
                         <label style="color:black;">Price</label>
                         <input type="text" formControlName="price" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.price.errors }" />
@@ -46,14 +54,14 @@
                     </div> 
                 </div>
                 <div class="form-group">
-                    <label style="color:black;">Upload image </label>
+                    <label style="color:black;">Upload Image </label>
                    <div> <input type="file" (change)="fileEvent($event)" /></div>
                  </div>
                 <div class="form-group ">
                     <label style="color:black;">Stock Number</label>
                     <input type="text" formControlName="stocknumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.stocknumber.errors }" />
                     <div *ngIf="submitted && f.stocknumber.errors" class="invalid-feedback">
-                        <div *ngIf="f.stocknumber.errors.required">Enter Stock number </div>
+                        <div *ngIf="f.stocknumber.errors.required">Enter Stock Number </div>
                     </div>
                </div>
                <div class="form-group ">

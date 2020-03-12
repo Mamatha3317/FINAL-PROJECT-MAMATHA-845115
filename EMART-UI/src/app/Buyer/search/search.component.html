@@ -8,18 +8,16 @@
 &nbsp;
 <form [formGroup]="searchform" >
 <div class="box">
-<input type="text" placeholder="Search.."  formControlName="Itemname" >
+<input type="text" placeholder="Search.."  formControlName="itemname" >
 &nbsp;
       <button type="submit" (click)="searchitems()">Search</button>
       </div>
     </form>
     <section>
         <table>
-            <tr *ngFor="let item of list"> 
-                <th>{{item.Itemname}}</th>
-            </tr>
+
             <tr *ngFor="let item of list2">
-               <td><img src="assets/images/chocos2.jpg" style="width: 200px; height:200px"><br><br>
+               <td><img src="assets/images/{{item.imagepath}}" style="width: 200px; height:200px"><br><br>
               
                Price:      {{item.price}}<br>
                Itemname:   {{item.itemname}}<br>

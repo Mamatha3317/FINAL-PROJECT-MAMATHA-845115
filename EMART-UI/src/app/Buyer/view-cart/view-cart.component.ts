@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { cart } from 'src/app/Models/cart';
+import { Item} from 'src/app/Models/item';
+import { Router } from '@angular/router';
+import { BuyerService } from 'src/app/Services/buyer.service';
+
 
 @Component({
   selector: 'app-view-cart',
@@ -7,9 +12,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewCartComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  cartlist:cart[];
+  item:Item;
+  cart:cart;
+  count:number;
+    constructor(private route:Router,private service:BuyerService) {
+      let buyerid=Number(localStorage.getItem('buyerid'));
+      this.service.GetCart(buyerid).subscribe(res=>{
+        this.cartlist=res;
+        console.log(this.cartlist);
+      });
+      // if(localStorage.getItem("sellerid")==null)
+      // {
+      //   this.route.navigateByUrl('/home/login');
+  
+      // }
+    
+     }
+    ngOnInit() {
+    }
+  BuyNow(item1:Item){
+        console.log(item1);
+        this.item=item1;
+        localStorage.setItem('item1',JSON.stringify(this.item));
+        this.route.navigateByUrl('buyer-landing-page/purchase-history');
   }
-
+  Remove(Cartid:number){
+  let id=Cartid;
+    alert("deleted")
+    console.log(Cartid);
+    this.service.DeleteFromCart(Cartid).subscribe(res=>{
+      console.log('Item Removed from Cart');
+      alert('Item Removed from Cart');
+    })
+  }
 }
+
+

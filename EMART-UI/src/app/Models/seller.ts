@@ -1,13 +1,13 @@
 export class Seller {
-    Sellerid:number;
-    Sellername:string;
-    Sellerpassword:string;
-    Companyname:string;
-    Gstin:string;
-    BriefAboutCompany:string;
-    PostalAddress:string;
+    sellerid:number;
+    sellername:string;
+    sellerpassword:string;
+    companyname:string;
+    gstin:string;
+    briefAboutCompany:string;
+    postalAddress:string;
     Website:string;
-    Sellermail:string;
-    Sellermobile:string;
-    CreatedDate:Date;
+    sellermail:string;
+    sellermobile:string;
+    createdDate:Date;
 }

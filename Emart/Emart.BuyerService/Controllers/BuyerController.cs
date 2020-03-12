@@ -115,17 +115,34 @@ namespace Emart.BuyerService.Controllers
             }
         }
 
-        public void AddToCart(int Itemid)
+        [HttpPost]
+        [Route("AddtoCart")]
+        public void AddToCart(Cart obj)
+        {
+            _repo.AddToCart(obj);
+        }
+        [HttpDelete]
+        [Route("DeleteFromCart/{Cartid}")]
+        public void Delete(int Cartid)
+        {
+            _repo.DeleteFromCart(Cartid);
+        }
+
+        [HttpGet]
+        [Route("GetCart/{Buyerid}")]
+        public IActionResult GetCart(int Buyerid)
         {
             try
             {
-                _repo.AddToCart(Itemid);
+                return Ok(_repo.GetCart(Buyerid));
             }
             catch (Exception e)
             {
-                NotFound(e.Message);
+                return NotFound(e.Message);
             }
+
         }
+
 
 
     }

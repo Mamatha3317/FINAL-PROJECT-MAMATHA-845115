@@ -10,6 +10,7 @@ namespace Emart.AdminService.Models
         public int? Sellerid { get; set; }
         public DateTime? DateTime { get; set; }
         public string Remarks { get; set; }
+        public string Transactiontype { get; set; }
 
         public virtual Buyer Buyer { get; set; }
         public virtual Seller Seller { get; set; }

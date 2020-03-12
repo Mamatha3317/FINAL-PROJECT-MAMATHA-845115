@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   buyer:Buyer;
   seller:Seller;
   role:string;
-   submitted=true;
+   submitted=false;
    errormessage:string;
    constructor(private formbuilder:FormBuilder,private route:Router,private services:UserService) {
     
@@ -36,13 +36,6 @@ export class LoginComponent implements OnInit {
    }
    Validate()
 {
-  this.submitted=true;
-  if(this.loginform.invalid)
-  {
-    return;
-  }
-  else
-  {
   
   this.buyer=new Buyer();
   this.seller=new Seller();
@@ -79,7 +72,7 @@ this.services.SLogin(name,pwd).subscribe(res=>{token=res;console.log(token)
   if(token.message=="success")
   {
     localStorage.setItem('token',token.token)
-    //localStorage.setItem("Sellerid",token.Sellerid.toString());
+    localStorage.setItem("Sellerid",String(token.Sellerid));
 
     // localStorage.setItem("username",this.seller.username);
     // localStorage.setItem("password",this.seller.password);
@@ -90,19 +83,14 @@ this.services.SLogin(name,pwd).subscribe(res=>{token=res;console.log(token)
   }
 });
 }
-else if(name=='admin' && pwd=='admin')
-{
-  alert('admin is logged in');
-  this.route.navigateByUrl("admin-landing-page");
-  
-}
+  if(name=='admin' && pwd=='admin')
+  {
+    
+    this.route.navigateByUrl("admin-landing-page");
+    
+  }
 
 }
 }
-    get f(){return this.loginform.controls};
-    onReset()
-    {
-      this.submitted=false;
-      this.loginform.reset();
-    }
-}
+    
+

@@ -19,15 +19,15 @@ export class EditsellerprofileComponent implements OnInit {
   
     ngOnInit() {
       this.sellerregisterform=this.formbuilder.group({
-        Sellerid:['',[Validators.required]],
-        Sellername:['',[Validators.required]],
-        Companyname:['',Validators.required],
-        BriefAboutCompany:['',Validators.required],
-        PostalAddress:['',Validators.required],
-        Gstin:['',Validators.required],
-        Sellermobile:['',[Validators.required, Validators.pattern("^[0-9]{10}$")]],
-        Sellermail:['',[Validators.required,Validators.email]],
-        Sellerpassword:['',[Validators.required]],
+        sellerid:['',[Validators.required]],
+        sellername:['',[Validators.required]],
+        companyname:['',Validators.required],
+        briefAboutCompany:['',Validators.required],
+        postalAddress:['',Validators.required],
+        gstin:['',Validators.required],
+        sellermobile:['',[Validators.required, Validators.pattern("^[0-9]{10}$")]],
+        sellermail:['',[Validators.required,Validators.email]],
+        sellerpassword:['',[Validators.required]],
       })
     }
     get f(){return this.sellerregisterform.controls;}
@@ -36,20 +36,20 @@ export class EditsellerprofileComponent implements OnInit {
       this.submitted= true;
       if(this.sellerregisterform.valid)
       {
-        this.seller.Sellerid=Number(this.sellerregisterform.value["Sellerid"]);
-        this.seller.Sellername=this.sellerregisterform.value["Sellername"];
-        this.seller.Sellermail=this.sellerregisterform.value["Sellermail"];
-        this.seller.Sellermobile=this.sellerregisterform.value["Sellermobile"];
-        this.seller.Sellerpassword=this.sellerregisterform.value["Sellerpassword"];
-        this.seller.Companyname=this.sellerregisterform.value["companyname"];
-        this.seller.BriefAboutCompany=this.sellerregisterform.value["BriefAboutCompany"];
-        this.seller.PostalAddress=this.sellerregisterform.value["PostalAddress"];
-        this.seller.Gstin=this.sellerregisterform.value["Gstin"];
+        this.seller.sellerid=Number(this.sellerregisterform.value["sellerid"]);
+        this.seller.sellername=this.sellerregisterform.value["sellername"];
+        this.seller.sellermail=this.sellerregisterform.value["sellermail"];
+        this.seller.sellermobile=this.sellerregisterform.value["sellermobile"];
+        this.seller.sellerpassword=this.sellerregisterform.value["sellerpassword"];
+        this.seller.companyname=this.sellerregisterform.value["companyname"];
+        this.seller.briefAboutCompany=this.sellerregisterform.value["briefAboutCompany"];
+        this.seller.postalAddress=this.sellerregisterform.value["postalAddress"];
+        this.seller.gstin=this.sellerregisterform.value["gstin"];
         this.seller.Website=this.sellerregisterform.value["Website"];
-        this.seller.CreatedDate=this.sellerregisterform.value["CreatedDate"];
+        this.seller.createdDate=this.sellerregisterform.value["createdDate"];
   
         console.log(this.seller)
-        this.services.EditProfile(this.seller).subscribe(res=>
+        this.services.Editprofile(this.seller).subscribe(res=>
           {
             console.log('Edited succesfully');
           },err=>{console.log(err)}
@@ -60,12 +60,12 @@ export class EditsellerprofileComponent implements OnInit {
     
   
       alert("Success");
-      this.route.navigateByUrl('home/login');
+      // this.route.navigateByUrl('home/login');
       
-        }
-        else
-        this.route.navigateByUrl('register-seller');
+      //   }
+      //   else
+      //   this.route.navigateByUrl('register-seller');
         
       }
     }
-  
+}

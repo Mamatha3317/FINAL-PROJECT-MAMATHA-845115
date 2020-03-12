@@ -1,1 +1,0 @@
-    <button (click)="validate()">Login</button>&nbsp;&nbsp;<br>

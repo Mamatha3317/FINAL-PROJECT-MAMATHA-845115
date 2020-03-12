@@ -17,11 +17,12 @@ export class SearchComponent implements OnInit {
   list:Item[];
   list2:Item[];
   
+  
     constructor(private service:BuyerService,private route:Router,private formbuilder:FormBuilder,private services:ItemService) { }
   
     ngOnInit() {
       this.searchform=this.formbuilder.group({
-        Itemname:['']
+        itemname:['']
       })
        this.ViewItems();
     }
@@ -39,7 +40,7 @@ export class SearchComponent implements OnInit {
     searchitems()
     {
       this.items=new Item();
-      this.items.itemname=this.searchform.value["Itemname"];
+      this.items.itemname=this.searchform.value["itemname"];
       this.service.searchitems(this.items.itemname).subscribe(res=>{
         this.list2=res
         console.log(this.list2);

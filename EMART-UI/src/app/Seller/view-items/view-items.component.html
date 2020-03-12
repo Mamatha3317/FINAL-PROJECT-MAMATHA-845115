@@ -5,13 +5,12 @@
                 <th>Item Id</th>
                 <th>ItemName</th>
                 <th>Price</th>
-                <th>Category Id</th>
-                <th>SubCategory Id</th>
+
                 <th>Seller Id</th>
-                <th>Description</th>
-                <th>Stocknumber</th>
+                <th>Stock</th>
                 <th>Remarks</th>
                 <th>Image</th>
+                
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -19,10 +18,9 @@
                <td>{{item.itemid}}</td>
                <td>{{item.itemname}}</td>
                <td>{{item.price}}</td>
-               <td>{{item.categoryid}}</td>
-               <td>{{item.subCategoryid}}</td>
+
                <td>{{item.sellerid}}</td>
-               <td>{{item.description}}</td>
+
                <td>{{item.stocknumber}}</td>
                <td>{{item.remarks}}</td>
                <td><img src='/assets/images/{{item.imagepath}}' style="height:150px; width:150px;"></td>
@@ -40,10 +38,11 @@
        float:center; 
     }
 </style>
+<div class="txt">
     <form fxLayoutAlign="center start">
         <div class="container card col-md-4 " id="fa" style="height:150;background-color:bisque">
             <div class="card-body">
-                <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+                <form [formGroup]="itemForm">
                     <div class="form-group">
                         <label >Item ID</label>
                         <input type="text" formControlName="itemid" class="form-control" readonly="readonly"/>
@@ -55,7 +54,7 @@
                        
                     </div>
                     <div class="form-group">
-                        <label>Item Price </label>
+                        <label>Price </label>
                         <input type="text" formControlName="price" class="form-control"  />
                     
                     </div>
@@ -82,17 +81,17 @@
                         <input type="text" formControlName="description" class="form-control"  />
                     
                     </div>
-                    <div class="form-group">
-                        <label>Remarks</label>
-                        <input type="text" formControlName="remarks" class="form-control"  />
                     
-                    </div>
                     <div class="form-group">
                         <label>Image Path</label>
                         <input type="text" formControlName="imagepath" class="form-control" readonly   />
                     
                     </div>
+                    <div class="form-group">
+                        <label>Remarks</label>
+                        <input type="text" formControlName="remarks" class="form-control" />
                     
+                    </div>
                     <div class="text-center">
                         <button class="btn btn-primary mr-1" (click)="Update()">Add Item</button>&nbsp;
                     </div>
@@ -100,5 +99,5 @@
             </div>
         </div>
     </form>
-                    
+</div>                 
             

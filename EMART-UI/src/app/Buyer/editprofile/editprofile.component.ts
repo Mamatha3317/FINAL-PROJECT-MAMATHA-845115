@@ -16,8 +16,15 @@ export class EditprofileComponent implements OnInit {
   submitted=false;
   buyer:Buyer;
  list:Buyer[];
-  constructor(private formbuilder:FormBuilder,private route:Router,private services:BuyerService) { }
+  constructor(private formbuilder:FormBuilder,private route:Router,private services:BuyerService) {
+    if(localStorage.getItem("Sellerid")==null)
+    {
+      this.route.navigateByUrl('/home/login');
 
+    }
+
+   }
+ 
   ngOnInit() {
     this.buyerregisterform=this.formbuilder.group({
       buyerid:[''],
@@ -42,7 +49,7 @@ export class EditprofileComponent implements OnInit {
 
 
       });
-      console.log(this.buyer);
+      
     });
 
 
@@ -61,13 +68,13 @@ export class EditprofileComponent implements OnInit {
       console.log(this.buyer)
       this.services.editprofile(this.buyer).subscribe(res=>
         {
-          this.buyer=res;
+
           console.log('Edited succesfully');
         },err=>{console.log(err)}
   
         )
-
-    }
-  }     
+          alert('Success')
+  }
+}    
      
 

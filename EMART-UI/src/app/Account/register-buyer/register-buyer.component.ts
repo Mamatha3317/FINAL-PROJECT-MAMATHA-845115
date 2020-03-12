@@ -33,7 +33,7 @@ list:Buyer[];
     this.buyer=new Buyer();
     this.buyer.buyerid=Number(this.buyerregisterform.value["buyerid"]);
      this.buyer.buyername=this.buyerregisterform.value["buyername"];
-     this.buyer.createddatetime=this.buyerregisterform.value["createdatetime"];
+     this.buyer.createddatetime=this.buyerregisterform.value["createddatetime"];
      this.buyer.buyermail=this.buyerregisterform.value["buyermail"];
      this.buyer.buyerno=this.buyerregisterform.value["buyerno"];
      this.buyer.buyerpassword=this.buyerregisterform.value["buyerpassword"];

@@ -4,6 +4,7 @@ import {Observable} from "Rxjs";
 import {Buyer} from 'src/app/Models/buyer';
 import {Seller} from 'src/app/Models/seller';
 import {Category} from 'src/app/Models/category';
+import { cart } from '../Models/cart';
 
 const Requestheaders={headers:new HttpHeaders({
   'Content-Type':'application/json',
@@ -49,9 +50,19 @@ export class BuyerService {
     return this.http.post<any>(this.url+'TransactionHistory/'+buyerid,Requestheaders);
   }
   
-  public AddToCart():Observable<any>
+  
+  public AddToCart(cart:cart):Observable<any>
   {
-    return this.http.get<any>(this.url+'GetAllItems',Requestheaders);
+    return this.http.post<any>(this.url+'AddToCart/',JSON.stringify(cart),Requestheaders)
   }
+  public DeleteFromCart(Cartid:number):Observable<cart>
+  {
+    return this.http.delete<cart>(this.url+'Deletefromcart/'+Cartid,Requestheaders)
+  }
+  public GetCart(buyerid:number):Observable<any>
+  {
+    return this.http.get<any>(this.url+'GetCart/'+buyerid,Requestheaders)
+  }
+
  
   }

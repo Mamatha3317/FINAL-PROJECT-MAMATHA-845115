@@ -21,9 +21,9 @@ namespace Emart.SellerService.Repositories
             _context.SaveChanges();
         }
 
-        public Seller GetProfile(int Sid)
+        public Seller GetProfile(int Sellerid)
         {
-            return _context.Seller.Find(Sid);
+            return _context.Seller.Find(Sellerid);
         }
 
         

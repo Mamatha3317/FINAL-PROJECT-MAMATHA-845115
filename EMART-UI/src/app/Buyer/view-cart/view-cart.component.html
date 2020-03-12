@@ -1,1 +1,37 @@
-<p>view-cart works!</p>
+<style>
+    tr,td{
+        color: white;
+    }
+</style>
+<main class="bg">   
+    <br/>
+    <br/>
+    <div class="container" >
+        <div class="row">
+          <div class="col-md-3" *ngFor="let item of cartlist" style="color:black;">
+              <div class="card bg-dark" style="width:250px;height: 500px;" >
+                <h5 class="card-title" style="color:white;">{{item.itemname}}</h5>
+                 <img class="card-img mx-5" id="i1" src="/assets/images/{{item.imagepath}}" style="width: 150px;height:150px;" alt="Card image cap"> 
+                  <div class="card-body" style="color: whitesmoke;">
+                    ItemId:{{item.itemid}}<br/>
+                    ItemName:{{item.itemname}}<br>
+                    CategoryId:{{item.categoryid}}<br/>
+                    SubCategoryId:{{item.subCategoryid}}<br/>
+                     SellerId: {{item.sellerid}}<br/>
+                     Price: {{item.price}}<br/>
+                      Description:{{item.description}}<br/>
+                      Stock Number:{{item.stocknumber}}<br/>
+                          
+                </div>
+                <div class="card-footer">
+                  <div class="text-center">
+                    <button class="btn btn-primary mr-1" (click)="BuyNow(item)" >Buy Now</button>
+                    <button class="btn btn-danger mr-1" (click)="Remove(item.Cartid)">Remove</button>
+                </div>
+                </div>     
+              </div>
+              <br>
+            </div>
+          </div>
+        </div>
+</main>

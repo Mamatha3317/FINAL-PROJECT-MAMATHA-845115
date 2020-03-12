@@ -1,1 +1,30 @@
-<p>purchase-history works!</p>
+<style>
+    tr,td{
+        color: white;
+    }
+</style>
+<div class="card m-1" style="width:100%;align-items: center;background-color: black;">
+    <div class="container">
+        <table class="table table-bordered">
+            <tr>
+                <th>Purchase Id</th>
+                <th>Seller Id</th>
+                <th>Buyer Id</th>
+                <th>Item Id</th>
+                <th>No of Items</th>
+                <th>Payment Mode</th>
+          
+               
+                <!-- <th>Edit</th>
+                <th>Delete</th> -->
+            </tr>
+            <tr *ngFor="let item of list">
+               <td>{{item.Purchaseid}}</td>
+               <td>{{item.Sellerid}}</td>
+               <td>{{item.Buyerid}}</td>
+               <td>{{item.Itemid}}</td>
+
+                <td>{{item.NoOfItems}}</td>
+                <td>{{item.TransactionType}}</td>
+</tr>
+        </table>

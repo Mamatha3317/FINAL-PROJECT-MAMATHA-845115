@@ -14,12 +14,12 @@ const Requestheaders={headers:new HttpHeaders({
 export class SellerService {
   url:string='http://localhost:60952/Seller/'
   constructor(private http:HttpClient) { }
-  public EditProfile(seller:Seller):Observable<any>
+  public Editprofile(seller:Seller):Observable<any>
   {
     return this.http.put<Seller>(this.url+'Editprofile/',JSON.stringify(seller),Requestheaders);
   }
-  public getprofile(sid:number):Observable<Seller>
+  public GetProfile(sellerid:number):Observable<Seller>
   {
-    return this.http.get<Seller>(this.url+'getprofile/'+sid,Requestheaders);
+    return this.http.get<Seller>(this.url+'GetProfile/'+sellerid,Requestheaders);
   }
 }

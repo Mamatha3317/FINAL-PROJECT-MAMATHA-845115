@@ -35,12 +35,12 @@ namespace Emart.SellerService.Controllers
         }
 
         [HttpGet]
-        [Route("GetProfile/{Sid}")]
-        public IActionResult GetProfile(int Sid)
+        [Route("GetProfile/{Sellerid}")]
+        public IActionResult GetProfile(int Sellerid)
         {
             try
             {
-                return Ok(_repo.GetProfile(Sid));
+                return Ok(_repo.GetProfile(Sellerid));
             }
             catch (Exception e)
             {
