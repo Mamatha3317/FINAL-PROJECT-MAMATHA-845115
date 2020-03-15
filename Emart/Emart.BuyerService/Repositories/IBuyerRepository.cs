@@ -10,10 +10,10 @@ namespace Emart.BuyerService.Repositories
     {
         List<Items> searchitems(string Itemname);
         Buyer GetById(int Buyerid);
-        void Additem(Transactions obj);
+        void Additem(PurchaseHistory obj);
         void editprofile(Buyer obj);
         Buyer getprofile(int Buyerid);
-        List<Transactions> TransactionHistory(int Buyerid);
+        List<Transactions> PurchaseHistory(int Buyerid);
         
         List<Items> GetAllItems();
         List<Items> SearchByCategoryId(int Categoryid);

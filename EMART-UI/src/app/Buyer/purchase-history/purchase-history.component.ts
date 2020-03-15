@@ -10,21 +10,23 @@ import { Router } from '@angular/router';
 })
 export class PurchaseHistoryComponent implements OnInit {
 
-  list:PurchaseHistory;
+  list:PurchaseHistory[];
   constructor(private service:BuyerService,private route:Router) {
     let buyerid=Number(localStorage.getItem("buyerid"));
-    this.service.TransactionHistory(buyerid).subscribe(res=>{
+    this.service.PurchaseHistory(buyerid).subscribe(res=>{
       this.list=res;
       console.log(this.list);
 
 
     })
-    // if(localStorage.getItem("sellerid")==null)
-    // {
-    //   this.route.navigateByUrl('/home/login');
+    if(localStorage.getItem("buyerid"))
+    {
+      
 
-    // }
-  
+    }
+  else {
+    this.route.navigateByUrl('/home/login');
+  }
    }
 
   ngOnInit() {

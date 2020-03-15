@@ -5,9 +5,10 @@ import {Buyer} from 'src/app/Models/buyer';
 import {Seller} from 'src/app/Models/seller';
 import {Category} from 'src/app/Models/category';
 import { cart } from '../Models/cart';
+import { PurchaseHistory } from '../models/purchase-history';
 
 const Requestheaders={headers:new HttpHeaders({
-  'Content-Type':'application/json',
+ 'Content-Type':'application/json',
   'Authorization': 'Bearer '+localStorage.getItem('token')
 
 })}
@@ -19,13 +20,13 @@ export class BuyerService {
   url:string='http://localhost:60952/Buyer/'
   constructor(private http:HttpClient) {}
    
-  // public Additem(Transactions:transactionHistory):Observable<any>
-  // {
-  //   return this.http.post<any>(this.url+'Additem',JSON.stringify(Transactions),Requestheaders);
-  // }
+  public Additem(PurchaseHistory:PurchaseHistory):Observable<any>
+   {
+    return this.http.post<any>(this.url+'Additem/',JSON.stringify(PurchaseHistory),Requestheaders);
+  }
   public editprofile(item:Buyer):Observable<any>
     {
-      return this.http.put<Buyer>(this.url+'editprofile',JSON.stringify(item),Requestheaders)
+      return this.http.put<Buyer>(this.url+'editprofile',item,Requestheaders)
     }
   public getprofile(buyerid:number):Observable<any>
     {
@@ -45,15 +46,15 @@ export class BuyerService {
     return this.http.get<any>(this.url+'SearchByCategoryId/'+Categoryid,Requestheaders);
   }
   
-  public TransactionHistory(buyerid:number):Observable<any>
+  public PurchaseHistory(buyerid:number):Observable<any>
   {
-    return this.http.post<any>(this.url+'TransactionHistory/'+buyerid,Requestheaders);
+    return this.http.get<any>(this.url+'PurchaseHistory/'+buyerid,Requestheaders);
   }
   
   
   public AddToCart(cart:cart):Observable<any>
   {
-    return this.http.post<any>(this.url+'AddToCart',JSON.stringify(cart),Requestheaders)
+    return this.http.post<any>(this.url+'AddToCart/',JSON.stringify(cart),Requestheaders)
   }
   public DeleteFromCart(cartid:number):Observable<cart>
   {

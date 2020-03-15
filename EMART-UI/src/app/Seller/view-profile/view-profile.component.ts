@@ -69,7 +69,7 @@ console.log('Edited Successfully');
       },err=>{console.log(err)}
       )
       alert("Success");
-      this.route.navigateByUrl('home/login');
+      
       
     }
     // else

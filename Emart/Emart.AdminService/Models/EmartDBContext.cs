@@ -30,7 +30,7 @@ namespace Emart.AdminService.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-M6PJD1D;Integrated Security=True;Initial Catalog=EmartDB;");
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-M6PJD1D;Initial Catalog=EmartDB;Persist Security Info=True;User ID=sa;Password=pass@word1;");
             }
         }
 
@@ -72,7 +72,7 @@ namespace Emart.AdminService.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.Imagepath)
-                    .HasMaxLength(10)
+                    .HasMaxLength(20)
                     .IsUnicode(false);
             });
 

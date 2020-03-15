@@ -17,10 +17,7 @@ export class SellerLandingPageComponent implements OnInit {
     console.log(this.name);
    }
   
-  else
-  {
-    this.route.navigateByUrl("login")
-  }
+  
 }
 
   ngOnInit() {

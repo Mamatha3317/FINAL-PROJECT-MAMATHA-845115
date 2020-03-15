@@ -1,5 +1,5 @@
 export class PurchaseHistory {
-        Purchaseid :number;
+        purchaseid :number;
        Buyerid:number;
       Sellerid :number;
      TransactionType :string;
@@ -7,5 +7,5 @@ export class PurchaseHistory {
     NoOfItems:number;
      DateTime:Date;
      Remarks:string;
-
+     itemname:string;
 }

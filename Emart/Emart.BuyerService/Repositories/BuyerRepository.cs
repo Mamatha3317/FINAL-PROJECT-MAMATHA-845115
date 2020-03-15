@@ -14,9 +14,9 @@ namespace Emart.BuyerService.Repositories
             _context = context;
 
         }
-        public void Additem(Transactions obj)
+        public void Additem(PurchaseHistory obj)
         {
-            _context.Transactions.Add(obj);
+            _context.PurchaseHistory.Add(obj);
             _context.SaveChanges();
 
         }
@@ -46,7 +46,7 @@ namespace Emart.BuyerService.Repositories
             return _context.Items.Where(e => e.Itemname == Itemname).ToList();
         }
 
-        public List<Transactions>TransactionHistory(int Buyerid)
+        public List<Transactions> PurchaseHistory(int Buyerid)
         {
             return _context.Transactions.Where(e => e.Buyerid == Buyerid).ToList();
         }

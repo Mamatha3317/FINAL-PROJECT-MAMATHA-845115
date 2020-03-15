@@ -17,13 +17,13 @@ export class EditprofileComponent implements OnInit {
   buyer:Buyer;
  list:Buyer[];
   constructor(private formbuilder:FormBuilder,private route:Router,private services:BuyerService) {
-    if(localStorage.getItem("Sellerid")==null)
-    {
-      this.route.navigateByUrl('/home/login');
+  //   if(localStorage.getItem("Sellerid")==null)
+  //   {
+  //     this.route.navigateByUrl('/home/login');
+
+  //   }
 
     }
-
-   }
  
   ngOnInit() {
     this.buyerregisterform=this.formbuilder.group({

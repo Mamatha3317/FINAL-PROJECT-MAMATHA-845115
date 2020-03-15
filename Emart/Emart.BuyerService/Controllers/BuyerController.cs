@@ -35,17 +35,32 @@ namespace Emart.BuyerService.Controllers
 
         [HttpPost]
         [Route("Additem")]
-        public void Additem(Transactions obj)
+        public IActionResult Additem(PurchaseHistory obj)
         {
-            _repo.Additem(obj);
+            try
+            {
+                _repo.Additem(obj);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return NotFound(e.InnerException.Message);
+            }
         }
 
         [HttpPut]
         [Route("editprofile")]
-        public void editprofile(Buyer obj)
+        public IActionResult editprofile(Buyer obj)
         {
-            _repo.editprofile(obj);
-
+            try
+            {
+                _repo.editprofile(obj);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return NotFound(e.Message);
+            }
         }
         [HttpGet]
         [Route("getprofile/{Buyerid}")]
@@ -75,12 +90,12 @@ namespace Emart.BuyerService.Controllers
             }
         }
         [HttpGet]
-        [Route("TransactionHistory/{Buyerid}")]
-        public IActionResult TransactionHistory(int Buyerid)
+        [Route("PurchaseHistory/{Buyerid}")]
+        public IActionResult PurchaseHistory(int Buyerid)
         {
             try
             {
-                return Ok(_repo.TransactionHistory(Buyerid));
+                return Ok(_repo.PurchaseHistory(Buyerid));
             }
             catch (Exception e)
             {
@@ -116,10 +131,18 @@ namespace Emart.BuyerService.Controllers
         }
 
         [HttpPost]
-        [Route("AddtoCart")]
-        public void AddToCart(Cart obj)
+        [Route("AddToCart")]
+        public IActionResult AddToCart(Cart obj)
         {
-            _repo.AddToCart(obj);
+            try
+            {
+                _repo.AddToCart(obj);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return NotFound(ex.InnerException.Message);
+            }
         }
         [HttpDelete]
         [Route("DeleteFromCart/{Cartid}")]

@@ -60,25 +60,7 @@ namespace Emart.test
             Assert.NotNull(x);
             //   Assert.Greater(x.Count, 0);
         }
-        [Test]
-        [Description("Buy product")]
-        public void TestAddItem()
-        {
-            _repo.Additem(new Transactions()
-            {
-                Buyerid = 1,
-                DateTime = System.DateTime.Now,
-                Transactiontype = "credit",
-                Transactionid = 786,
-
-                Sellerid = 1,
-                Remarks = "gud",
-
-            });
-            var x = _repo.transactionshistory(2);
-            Assert.IsNotNull(x);
-
-        }
+       
         [Test]
         public void TestGetCart()
         {

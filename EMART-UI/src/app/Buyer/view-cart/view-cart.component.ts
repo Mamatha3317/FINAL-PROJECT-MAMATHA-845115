@@ -22,10 +22,13 @@ export class ViewCartComponent implements OnInit {
         this.cartlist=res;
         console.log(this.cartlist);
       });
-      // if(localStorage.getItem("sellerid")==null)
+      // if(localStorage.getItem("buyerid"))
       // {
-      //   this.route.navigateByUrl('/home/login');
+       
   
+      // }
+      // else{
+      //   this.route.navigateByUrl('/home/login');
       // }
     
      }
@@ -35,7 +38,7 @@ export class ViewCartComponent implements OnInit {
         console.log(item1);
         this.item=item1;
         localStorage.setItem('item1',JSON.stringify(this.item));
-        this.route.navigateByUrl('buyer-landing-page/purchase-history');
+        this.route.navigateByUrl("buyer-landing-page/buy-product");
   }
   Remove(cartid:number){
   let id=cartid;

@@ -1,30 +1,31 @@
 <style>
     tr,td{
-        color: white;
+        color:black;
     }
 </style>
-<div class="card m-1" style="width:100%;align-items: center;background-color: lightseagreen;">
+<div class="card m-1" style="width:100%;align-items: center;background-color: white;">
     <div class="container">
         <table class="table table-bordered">
             <tr>
                 <th>Purchase Id</th>
                 <th>Seller Id</th>
                 <th>Buyer Id</th>
-                <th>Item Id</th>
-                <th>No of Items</th>
+                
+               
                 <th>Payment Mode</th>
+                <th>Remarks</th>
           
                
                 <!-- <th>Edit</th>
                 <th>Delete</th> -->
             </tr>
             <tr *ngFor="let item of list">
-               <td>{{item.Purchaseid}}</td>
-               <td>{{item.Sellerid}}</td>
-               <td>{{item.Buyerid}}</td>
-               <td>{{item.Itemid}}</td>
+               <td>{{item.transactionid}}</td>
+               <td>{{item.sellerid}}</td>
+               <td>{{item.buyerid}}</td>
+            
 
-                <td>{{item.NoOfItems}}</td>
-                <td>{{item.TransactionType}}</td>
+                <td>{{item.transactiontype}}</td>
+                <td>{{item.remarks}}</td>
 </tr>
         </table>

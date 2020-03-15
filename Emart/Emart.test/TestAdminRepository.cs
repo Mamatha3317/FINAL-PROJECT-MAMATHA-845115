@@ -55,11 +55,11 @@ namespace Emart.test
         {
             _repo.AddCategory(new Category()
             {
-                Categoryid = 5,
-                Categoryname="keyboards",
-                BriefDetails="Typingkeyboards"
+                Categoryid = 2,
+                Categoryname="dolls",
+                BriefDetails="lids dolls"
             });
-            var result = _repo.getbyid(4);
+            var result = _repo.getbyid(2);
             Assert.NotNull(result);
         }
         [Test]
@@ -67,20 +67,20 @@ namespace Emart.test
         {
             _repo.AddSubCategory(new SubCategory()
             {
-                SubCategoryid = 5,
-                SubCategoryname = "SystemKeyboards",
-                Categoryid = 5,
-                BriefDetails = "Typingkeyboards",
+                SubCategoryid = 2,
+                SubCategoryname = "toys",
+                Categoryid = 2,
+                BriefDetails = "kids toys",
                 Gstin = "876"
             }) ;
-            var result = _repo.getby(4);
+            var result = _repo.getby(2);
             Assert.NotNull(result);
         }
         [Test]
         public void TestDeleteSubCategory()
         {
-            _repo.DeleteSubCategory(4);
-            var result = _repo.getby(4);
+            _repo.DeleteSubCategory(5);
+            var result = _repo.getby(5);
             Assert.Null(result);
         }
         [Test]

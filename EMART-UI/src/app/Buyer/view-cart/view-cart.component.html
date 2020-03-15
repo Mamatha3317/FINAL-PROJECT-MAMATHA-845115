@@ -13,8 +13,9 @@
                 <h5 class="card-title" style="color:white;">{{item.itemname}}</h5>
                  <img class="card-img mx-5" id="i1" src="/assets/images/{{item.imagepath}}" style="width: 150px;height:150px;" alt="Card image cap"> 
                   <div class="card-body" style="color: whitesmoke;">
+                    Cartid:{{item.cartid}}<br>
                     ItemId:{{item.itemid}}<br/>
-                    ItemName:{{item.itemname}}<br>
+                    
                     CategoryId:{{item.categoryid}}<br/>
                     SubCategoryId:{{item.subCategoryid}}<br/>
                      SellerId: {{item.sellerid}}<br/>
@@ -25,7 +26,7 @@
                 </div>
                 <div class="card-footer">
                   <div class="text-center">
-                    <button class="btn btn-primary mr-1" (click)="BuyNow(item)" >Buy Now</button>
+                    <button class="btn btn-primary mr-1" (click)='BuyNow(item)' >Buy Now</button>
                     <button class="btn btn-danger mr-1" (click)="Remove(item.cartid)">Remove</button>
                 </div>
                 </div>     

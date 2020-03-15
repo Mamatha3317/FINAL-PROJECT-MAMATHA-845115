@@ -22,7 +22,7 @@
                     
                 <div class="form-group">
                         <label>Mobile</label>
-                        <input type="text" value="+91" readonly size="2"/><input type="number" formControlName="buyerno" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.buyerno.errors }" />
+                        <input type="text" value="+91" readonly size="2"/><input type="text" formControlName="buyerno" class="form-control" />
                         <!-- <div *ngIf="submitted && f.buyerno.errors" class="invalid-feedback">
                             <div *ngIf="f.buyerno.errors.required">Mobile no is required</div>
                             <div *ngIf="f.buyerno.errors.pattern">Mobile no Must be Valid</div>

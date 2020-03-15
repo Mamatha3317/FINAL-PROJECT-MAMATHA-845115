@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Item } from 'src/app/Models/item';
+import {Router} from '@angular/router';
+import {Item} from 'src/app/Models/item'; 
+import {PurchaseHistory} from 'src/app/Models/purchase-history';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { PurchaseHistory } from 'src/app/Models/purchase-history';
 import { BuyerService } from 'src/app/Services/buyer.service';
-import { ItemService } from 'src/app/Services/item.service';
-import { Router } from '@angular/router';
 import { cart } from 'src/app/Models/cart';
+
 
 
 @Component({
@@ -14,91 +14,58 @@ import { cart } from 'src/app/Models/cart';
   styleUrls: ['./buy-product.component.css']
 })
 export class BuyProductComponent implements OnInit {
-
+cart:cart;
   item:Item;
-  list1:Item[];
-  submitted=false;
-  cart:cart;
-  transaction:PurchaseHistory;
-  buyproductform:FormGroup;
-  constructor(private formbuilder:FormBuilder,private buyer:BuyerService,private items:ItemService,private route:Router) { 
-    if(localStorage.getItem("Sellerid")==null)
-    {
-      this.route.navigateByUrl('/home/login');
+submitted:false;
+transaction:PurchaseHistory;
+buyform:FormGroup;
 
-    }
-  
-  }
+  constructor(private formbuilder:FormBuilder,private router:Router,private service :BuyerService) { }
 
   ngOnInit() {
-    this.buyproductform=this.formbuilder.group({
-      itemname:[''],
-      TransactionType:[''],
-      cardNumber:[''],
-      CVV:[''],
-      expirydate:[''],
-      name:[''],
-      
-      Sellerid:[''],
-      NoOfItems:[''],
-      itemid:[''],
-      DateTime:['']
+    this.buyform=this.formbuilder.group({
+Itemid:[''],
+TransactionType:[''],
+cardnumber:[''],
+CVV:[''],
+ed:[''],
+name:[''],
+purchaseid:[''],
+Sellerid:[''],
+NoOfItems:[''],
+// iid:[''],
+DateTime:[''],
+Remarks:[''],
     })
-    this.Viewitems()
-    this.viewdata();
     
+    this.GetCart();
   }
-  viewdata()
-  {
-    this.item=JSON.parse(localStorage.getItem('item1'));
-    console.log(this.item);
-    console.log(this.item.itemid);
-    this.buyproductform.patchValue({
-        itemname:this.item.itemname,
-      
-      
-    })
-  }
-  Viewitems()
-{ 
-  this.items.GetAllItems().subscribe(res=>
-    {
-      this.list1=res;
-      console.log(this.list1);
-    },
-    err=>{
-      console.log(err);
-    });
+   GetCart(){
+    this.cart=JSON.parse(localStorage.getItem('item1'));
+    console.log(this.cart);
+  console.log(this.cart.cartid);
+    
+  
 }
-buy(item2:Item)
+purchase(){
+ // this.submitted=true;
+this.transaction=new PurchaseHistory();
+this.transaction.Sellerid=this.cart.sellerid;
+this.transaction.Itemid=this.cart.itemid;
 
-{
-  console.log(item2);
-  localStorage.setItem('item1',JSON.stringify(item2));
-  this.route.navigateByUrl('buyer-landing-page/purchase-history');
+this.transaction.NoOfItems=Number(this.buyform.value["NoOfItems"]);
+this.transaction.Buyerid=Number(localStorage.getItem("buyerid"));
+this.transaction.DateTime=this.buyform.value["DateTime"];
+this.transaction.purchaseid=Math.round(Math.random()*1000);
+this.transaction.TransactionType=this.buyform.value["TransactionType"];
+this.transaction.Remarks=this.buyform.value["Remarks"];
+console.log(this.transaction);
+this.service.Additem(this.transaction).subscribe(res=>{
+  alert(" Transaction successfull");
+},err=>{console.log(err)}
+)
+this.router.navigateByUrl("buyer-landing-page/purchase-history")
+}
 
 }
-AddtoCart(item2:Item){
-  let itemlocal=JSON.stringify(localStorage.getItem("item1"));
-  console.log(item2);
-  let buyerid=localStorage.getItem('buyerid');
- this.cart=new cart();
- this.cart.cartid=(Math.round(Math.random()*1000));
- this.cart.itemid=item2.itemid;
- this.cart.categoryid=item2.categoryid;
- this.cart.subCategoryid=item2.subCategoryid;
- this.cart.sellerid=item2.sellerid;
- this.cart.stocknumber=Number(item2.stocknumber);
-  this.cart.price=Number(item2.price);
- this.cart.description=item2.description;
- this.cart.imagepath=item2.imagepath;
- this.cart.buyerid=Number(localStorage.getItem("buyerid"));
- console.log(this.cart);
- this.buyer.AddToCart(this.cart).subscribe(res=>{
-   console.log("Record added to Cart");
-   alert('Item has been Added To Cart');
- })
-}
-s
 
-}

@@ -13,8 +13,10 @@
       <button type="submit" (click)="searchitems()">Search</button>
       </div>
     </form>
-    <section>
-        <table>
+    <section  >
+        <table >
+            <!-- <tr *ngFor="let item of list">
+                <th>{{item.itemname}}</th> -->
 
             <tr *ngFor="let item of list2">
                <td><img src="assets/images/{{item.imagepath}}" style="width: 200px; height:200px"><br><br>
@@ -24,8 +26,8 @@
                Description:{{item.description}}<br>
                Stocknumber:{{item.stocknumber}}<br>
                Remarks:    {{item.remarks}}
-               <button id="bt1" (click)="buy()" >Buy</button><br><br>
-               <button id="bt2">Add To Cart</button></td>
+               <button id="bt1" (click)="buy(item)" >Buy</button><br><br>
+               <button id="bt2" (click)="AddToCart(item)">AddToCart</button></td>
      
             </tr>
         </table>  

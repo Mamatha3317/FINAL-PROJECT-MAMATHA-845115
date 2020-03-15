@@ -73,7 +73,7 @@ onSubmit()
         console.log(err);
 
       })
-      alert("success");
+     
   }
   GetSubCategory()
  {

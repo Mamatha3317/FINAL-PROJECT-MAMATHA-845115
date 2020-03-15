@@ -4,6 +4,8 @@ import {Item} from 'src/app/Models/item';
 import { BuyerService } from 'src/app/services/buyer.service';
 import { ItemService } from 'src/app/services/item.service';
 import {Router} from '@angular/router';
+import { Category } from 'src/app/Models/category';
+import {cart} from 'src/app/Models/cart'; 
 
 @Component({
   selector: 'app-search',
@@ -16,6 +18,9 @@ export class SearchComponent implements OnInit {
   items:Item;
   list:Item[];
   list2:Item[];
+  cart:cart;
+  isShow:boolean=true;
+  clist:Category[];
   
   
     constructor(private service:BuyerService,private route:Router,private formbuilder:FormBuilder,private services:ItemService) { }
@@ -24,9 +29,9 @@ export class SearchComponent implements OnInit {
       this.searchform=this.formbuilder.group({
         itemname:['']
       })
-       this.ViewItems();
+       this.Viewitems();
     }
-    ViewItems()
+    Viewitems()
     { 
       this.services.GetAllItems().subscribe(res=>
         {
@@ -50,13 +55,35 @@ export class SearchComponent implements OnInit {
         console.log(err);
       })
     }
-    buy()
+    buy(item2:Item)
     {
+      console.log(item2);
+      localStorage.setItem('item1',JSON.stringify(item2));
       this.route.navigateByUrl('buyer-landing-page/buy-product');
     }
-    addtocart()
-    {
-      
+    AddToCart(item2:Item){
+    //  let itemlocal=JSON.stringify(localStorage.getItem("item1"));
+    //  console.log(item2);
+      // let buyerid=localStorage.getItem('buyerid');
+     this.cart=new cart();
+     this.cart.cartid=(Math.round(Math.random()*1000));
+     this.cart.itemid=item2.itemid;
+     this.cart.categoryid=item2.categoryid;
+     this.cart.subCategoryid=item2.subCategoryid;
+     this.cart.sellerid=item2.sellerid;
+     this.cart.stocknumber=Number(item2.stocknumber);
+      this.cart.price=item2.price;
+     this.cart.description=item2.description;
+     this.cart.imagepath=item2.imagepath;
+    this.cart.buyerid=Number(localStorage.getItem("buyerid"));
+     console.log(this.cart);
+     this.service.AddToCart(this.cart).subscribe(res=>{
+     
+       console.log("Record added To Cart");
+       alert('Item has been Added To Cart');
+     })
+    //  this.route.navigateByUrl("buyer-landing-page/view-cart")
     }
-  }
+ }
+    
   
